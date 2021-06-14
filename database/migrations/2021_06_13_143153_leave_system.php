@@ -15,6 +15,7 @@ class LeaveSystem extends Migration
     {
         Schema::create('leaveSystem', function (Blueprint $table) {
             $table->char('id', 5);
+            $table->string('name');
             $table->string('leaveReason');
             $table->timestamp('date');
             $table->primary(['id', 'date']);

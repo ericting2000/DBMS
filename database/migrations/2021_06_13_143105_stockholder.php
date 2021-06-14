@@ -15,6 +15,8 @@ class Stockholder extends Migration
     {
         Schema::create('stockholder', function (Blueprint $table) {
             $table->char('id', 5);
+            $table->string('password');
+            $table->string('company');
             $table->string('name');
             $table->char('birth', 8);
             $table->char('phoneNumber', 9);

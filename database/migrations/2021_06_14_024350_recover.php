@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Lot extends Migration
+class Recover extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class Lot extends Migration
      */
     public function up()
     {
-        Schema::create('lot', function (Blueprint $table) {
-            $table->char('lotNumber', 5);
-            $table->char('serialNumber', 5);
-            $table->primary('lotNumber');
-            $table->foreign('serialNumber')->references('serialNumber')->on('transaction');
+        Schema::create('recover', function (Blueprint $table) {
+            $table->string('company');
+            $table->string('reason');
         });
     }
-    
+
     /**
      * Reverse the migrations.
      *
@@ -28,6 +26,6 @@ class Lot extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lot');
+        Schema::dropIfExists('recover');
     }
 }
