@@ -46,6 +46,17 @@
       width: 230px;
       border-right: 1px solid rgba(0, 0, 0, 0.1);
     }
+
+    .modal-header {
+      border-radius: 14px 14px 0 0;
+      background-color: #003865;
+      border-bottom: 0 none;
+    }
+
+    .modal-content {
+      border-radius: 16px;
+    }
+
     .logo {
       display: flex;
       align-items: center;
@@ -99,6 +110,25 @@
       padding: 50px;
       margin-left: 55px;
       width: 90%;
+    }
+    .row .col-md-12:hover {
+      background-color: #003865 !important;
+      color: white;
+      -o-transition: color 0.2s linear;
+      -webkit-transition: color 0.2s linear;
+      -moz-transition: color 0.2s linear;
+      transition: color 0.2s linear;
+      -o-transition: background-color 0.2s linear;
+      -webkit-transition: background-color 0.2s linear;
+      -moz-transition: background-color 0.2s linear;
+      transition: background-color 0.2s linear;
+    }
+    .row .col-md-12 #p1,
+    #p2,
+    #p3,
+    #p4 {
+      width: 25%;
+      margin: 0;
     }
   </style>
 
@@ -196,190 +226,302 @@
 
           <div class="row">
             <div
-              class="col-md-7"
+              class="col-md-3"
               style="
                 background-color: rgba(108, 159, 200, 0.77);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              請假日期
+              員工姓名
             </div>
             <div
-              class="col-md-5"
+              class="col-md-3"
               style="
                 background-color: rgba(108, 159, 200, 0.77);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              請假類別
+              性別
             </div>
             <div
-              class="col-md-7"
+              class="col-md-3"
               style="
-                background-color: rgba(235, 235, 235, 0.63);
+                background-color: rgba(108, 159, 200, 0.77);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              2021.04.28
+              生日
             </div>
             <div
-              class="col-md-5"
+              class="col-md-3"
               style="
-                background-color: rgba(235, 235, 235, 0.63);
+                background-color: rgba(108, 159, 200, 0.77);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.04.25
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.31
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.26
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.15
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.10
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.08
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.01
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
+              職稱
             </div>
           </div>
+          <a href="#detail"
+            ><div class="row">
+              <div
+                class="col-md-12"
+                style="
+                  background-color: rgba(235, 235, 235, 0.63);
+                  text-align: center;
+                  padding: 5px 0;
+                  display: flex;
+                "
+              >
+                <p id="p1">張曉華</p>
+                <p id="p2">男</p>
+                <p id="p3">XXXX.XX.XX</p>
+                <p id="p4">員工</p>
+              </div>
+            </div>
+          </a>
+          <a href="#detail"
+            ><div class="row">
+              <div
+                class="col-md-12"
+                style="
+                  background-color: rgba(235, 235, 235, 0.63);
+                  text-align: center;
+                  padding: 5px 0;
+                  display: flex;
+                "
+              >
+                <p id="p1">張曉華</p>
+                <p id="p2">男</p>
+                <p id="p3">XXXX.XX.XX</p>
+                <p id="p4">員工</p>
+              </div>
+            </div>
+          </a>
+          <a href="#detail"
+            ><div class="row">
+              <div
+                class="col-md-12"
+                style="
+                  background-color: rgba(235, 235, 235, 0.63);
+                  text-align: center;
+                  padding: 5px 0;
+                  display: flex;
+                "
+              >
+                <p id="p1">張曉華</p>
+                <p id="p2">男</p>
+                <p id="p3">XXXX.XX.XX</p>
+                <p id="p4">員工</p>
+              </div>
+            </div>
+          </a>
+          <a href="#detail"
+            ><div class="row">
+              <div
+                class="col-md-12"
+                style="
+                  background-color: rgba(235, 235, 235, 0.63);
+                  text-align: center;
+                  padding: 5px 0;
+                  display: flex;
+                "
+              >
+                <p id="p1">張曉華</p>
+                <p id="p2">男</p>
+                <p id="p3">XXXX.XX.XX</p>
+                <p id="p4">員工</p>
+              </div>
+            </div>
+          </a>
+          <a href="#detail"
+            ><div class="row">
+              <div
+                class="col-md-12"
+                style="
+                  background-color: rgba(235, 235, 235, 0.63);
+                  text-align: center;
+                  padding: 5px 0;
+                  display: flex;
+                "
+              >
+                <p id="p1">張曉華</p>
+                <p id="p2">男</p>
+                <p id="p3">XXXX.XX.XX</p>
+                <p id="p4">員工</p>
+              </div>
+            </div>
+          </a>
+          <a href="#detail"
+            ><div class="row">
+              <div
+                class="col-md-12"
+                style="
+                  background-color: rgba(235, 235, 235, 0.63);
+                  text-align: center;
+                  padding: 5px 0;
+                  display: flex;
+                "
+              >
+                <p id="p1">張曉華</p>
+                <p id="p2">男</p>
+                <p id="p3">XXXX.XX.XX</p>
+                <p id="p4">員工</p>
+              </div>
+            </div>
+          </a>
+          <a href="#detail"
+            ><div class="row">
+              <div
+                class="col-md-12"
+                style="
+                  background-color: rgba(235, 235, 235, 0.63);
+                  text-align: center;
+                  padding: 5px 0;
+                  display: flex;
+                "
+              >
+                <p id="p1">張曉華</p>
+                <p id="p2">男</p>
+                <p id="p3">XXXX.XX.XX</p>
+                <p id="p4">員工</p>
+              </div>
+            </div>
+          </a>
+          <a href="#detail"
+            ><div class="row">
+              <div
+                class="col-md-12"
+                style="
+                  background-color: rgba(235, 235, 235, 0.63);
+                  text-align: center;
+                  padding: 5px 0;
+                  display: flex;
+                "
+              >
+                <p id="p1">張曉華</p>
+                <p id="p2">男</p>
+                <p id="p3">XXXX.XX.XX</p>
+                <p id="p4">員工</p>
+              </div>
+            </div>
+          </a>
         </div>
       </content>
     </box>
-
+    <!--Modal detail-->
+    <div
+      class="modal fade bd-example-modal-lg"
+      id="detail"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="exampleModalCenterTitle"
+              style="color: white; font-weight: 400"
+            >
+              張曉華
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="color: white; font-size: 30px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">職稱</div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">密碼</div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                XXXXXXX
+              </div>
+              <div class="col-md-5">修改密碼</div>
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">性別</div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">生日</div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                男
+              </div>
+              <div
+                class="col-md-5"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                19880813
+              </div>
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">職稱</div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">
+                到職日期
+              </div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                員工
+              </div>
+              <div
+                class="col-md-5"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                20180801
+              </div>
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">
+                聯絡地址
+              </div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">
+                市內電話
+              </div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                XXXXXXXXXXXX
+              </div>
+              <div
+                class="col-md-5"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                02-1234-2345
+              </div>
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">手機</div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">
+                電子信箱
+              </div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                0988-888-888
+              </div>
+              <div
+                class="col-md-5"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                12345@gmail.com
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -397,5 +539,11 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <!-- modal show-->
+    <script>
+      $('a[href$="#detail"]').on('click', function () {
+        $('#detail').modal('show');
+      });
+    </script>
   </body>
 </html>

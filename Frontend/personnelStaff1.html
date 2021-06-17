@@ -47,6 +47,15 @@
     .modal-header {
       border-radius: 14px 14px 0 0;
       background-color: #003865;
+      border-bottom: 0 none;
+    }
+
+    .modal-content {
+      border-radius: 16px;
+    }
+
+    .modal-footer {
+      border-top: 0 none;
     }
 
     .logo {
@@ -100,14 +109,6 @@
       padding: 40px;
       margin-left: 55px;
       width: 90%;
-    }
-    .modal-content {
-      border-radius: 16px;
-    }
-
-    .modal-header {
-      border-radius: 14px 14px 0 0;
-      background-color: #003865;
     }
   </style>
 
@@ -331,7 +332,11 @@
               type="button"
               class="btn btn-primary"
               data-dismiss="modal"
-              style="background-color: #003865; border-style: none"
+              style="
+                background-color: #003865;
+                border-style: none;
+                border-radius: 10px;
+              "
             >
               確認修改
             </button>
