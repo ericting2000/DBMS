@@ -19,4 +19,9 @@ class StockHolderService
     {
         return $this->StockHolderRepository->getStockHolderData($userId, $userPassword);
     }
+
+    public function modifyPw($userId, $userPassword, $newPassword)
+    {
+        return $this->StockHolderRepository->modifyPw($userId, $userPassword, $newPassword);
+    }
 }

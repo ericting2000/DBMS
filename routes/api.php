@@ -24,3 +24,5 @@ Route::post('/getUserInfo','App\Http\Controllers\StockHolderController@getIndivi
 //股東資料總覽
 Route::post('/getStockHolderInfo','App\Http\Controllers\StockHolderController@getStockHolderInfo');
 
+//修改密碼
+Route::post('/modifyPassword','App\Http\Controllers\StockHolderController@modifyPassword');
