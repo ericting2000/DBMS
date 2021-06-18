@@ -14,8 +14,8 @@ class Share extends Migration
     public function up()
     {
         Schema::create('share', function (Blueprint $table) {
-            $table->char('shareNumber', 5);
-            $table->char('serialNumber', 5);
+            $table->integer('shareNumber');
+            $table->integer('serialNumber');
             $table->primary('shareNumber');
             $table->foreign('serialNumber')->references('serialNumber')->on('transaction');
         });

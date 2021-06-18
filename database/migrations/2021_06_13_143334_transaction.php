@@ -15,7 +15,7 @@ class Transaction extends Migration
     {
         Schema::create('transaction', function (Blueprint $table) {
             $table->char('id', 5);
-            $table->char('serialNumber', 5);
+            $table->integer('serialNumber');
             $table->string('type');
             $table->integer('amount')->unsigned();
             $table->timestamp('datetime');
