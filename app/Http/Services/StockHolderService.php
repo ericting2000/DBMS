@@ -24,4 +24,14 @@ class StockHolderService
     {
         return $this->StockHolderRepository->modifyPw($userId, $userPassword, $newPassword);
     }
+
+    public function getTransInfo($userId)
+    {
+        return $this->StockHolderRepository->getTransInfo($userId);
+    }
+
+    public function makeTransaction($userId, $share, $lot, $type, $dateTime)
+    {
+        return $this->StockHolderRepository->makeTransaction($userId, $share, $lot, $type, $amount, $dateTime);
+    }
 }
