@@ -22,6 +22,8 @@ class Stockholder extends Migration
             $table->char('birth', 8);
             $table->char('phoneNumber', 9);
             $table->string('address');
+            $table->integer('share')->default(0);
+            $table->integer('lot')->default(0);
             $table->primary('id');
         });
     }
