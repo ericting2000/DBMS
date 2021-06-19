@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//取得個人資料
+Route::post('/getUserInfo','App\Http\Controllers\StockHolderController@getIndividualInfo');
+
+//股東資料總覽
+Route::post('/getStockHolderInfo','App\Http\Controllers\StockHolderController@getStockHolderInfo');
+
