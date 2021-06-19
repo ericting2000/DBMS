@@ -77,4 +77,42 @@ class StockHolderController extends BaseController
             return response('error: data error',400);
         }
     }
-}
+
+    public function getTransInfo(Request $request)
+    {
+        $userId=$request->userId;
+        if(empty($userId))
+        {
+            return response('error: exist empty',400);
+        }
+        $get_Trans_info=$this->StockHolderService->getTransInfo($userId);
+        if($get_Trans_info){
+            return response()->json($get_Trans_info,200);
+        }
+        else{
+            return response('error: data error',400);
+        }
+    }
+
+    public function makeTransaction(Request $request)
+    {
+        $userId=$request->userId;
+        $share=$request->share;
+        $lot=$request->lot;
+        $type=$request->type;
+        $amount=$request->amount;
+        $dateTime=$request->dateTime;
+        if(empty($userId))
+        {
+            return response('error: exist empty',400);
+        }
+        $transaction=$this->StockHolderService->makeTransaction($userId, $share, $lot, $type, $amount, $dateTime);
+        if($transaction){
+            return response()->json($transaction,200);
+        }
+        else{
+            return response('error: data error',400);
+        }
+    }
+
+}    
