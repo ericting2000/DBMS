@@ -33,7 +33,7 @@
     //     data: { userId: username, userPassword: password },
     //     beforeSend: function () { }
     // }).success(function(data){})
-            /*try {
+            try {
                 const response = await fetch("/api/getUserInfo", {
                   
                     method: "POST",
@@ -43,13 +43,13 @@
                         "userPassword": "88888888"})
                         
                 });
-                const data = await response.json();
-                console.log(data);
+               // const data = await response.json();
+                console.log(response);
             } catch (err) {
                 console.log(err);
-            }*/
+            }
 
-            try {
+            /*try {
                 const response = await fetch("/api/getIndividualTransInfo?userId=E0001", {
                   
                     method: "GET",
@@ -63,7 +63,7 @@
             } catch (err) {
                 console.log(err);
             }
-
+            */
             //window.location.href = "./Staff1";
             //window.location.href = "./Boss1";
         }
