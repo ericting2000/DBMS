@@ -67,4 +67,46 @@ class StockholderRepository
         }
         else return false;
     }
+
+    public function getTransInfo($userId)
+    {
+        //->join('Lot','Transaction.serialNumber','=','Lot.serialNumber')
+        //->join('Share','Transaction.serialNumber','=','Share.serialNumber')
+        $info=DB::table('Transaction')->where('id', '=', $userId)
+                    ->select('Transaction.serialNumber', 'Transaction.type','Transaction.datetime')
+                    ->get();
+        if($info)
+        {
+            return $info;
+        }
+        else return false;
+    }
+    /*
+    public function makeTransaction($userId, $share, $lot, $type, $amount, $dateTime)
+    {
+        $find=Stockholder::where('id','=',$userId)->first();
+        if($find)
+        {
+            if($type=='sell')
+            {
+                //$affected = DB::table('Stockholder')->where('id', '=', $userId)->update(array('password' => $newPassword));
+                if($affected) return true;
+                else return false;
+            }
+            else if($type=='buy')
+            {
+                if($share>0)
+                {
+
+                }
+                $affected = DB::table('Stockholder')->where('id', '=', $userId)->update(array('password' => $newPassword));
+                if($affected) return true;
+                else return false;
+            }
+            else return false;
+            
+        }
+        else return false;
+    }*/
 }
+

@@ -14,9 +14,10 @@ class Lot extends Migration
     public function up()
     {
         Schema::create('lot', function (Blueprint $table) {
-            $table->char('lotNumber',5);
-            $table->char('serialNumber',5);
-            $table->primary('lotNumber');
+            $table->string('type');
+            $table->integer('lot')->nullable();
+            $table->string('serialNumber');
+            $table->primary('serialNumber');
             $table->foreign('serialNumber')->references('serialNumber')->on('transaction');
         });
     }

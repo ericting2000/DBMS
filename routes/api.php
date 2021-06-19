@@ -26,3 +26,12 @@ Route::post('/getStockHolderInfo','App\Http\Controllers\StockHolderController@ge
 
 //修改密碼
 Route::post('/modifyPassword','App\Http\Controllers\StockHolderController@modifyPassword');
+
+//個人交易紀錄
+Route::get('/getIndividualTransInfo','App\Http\Controllers\StockHolderController@getTransInfo');
+
+//交易股票
+Route::post('/makeTransaction','App\Http\Controllers\StockHolderController@makeTransaction');
+
+
+
