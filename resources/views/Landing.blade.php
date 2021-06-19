@@ -23,21 +23,24 @@
         async function login() {
             let username = document.getElementById("Username").value;
             let password = document.getElementById("Password").value;
-            console.log(username);
-            console.log(password);
+            console.log('1111',typeof(username));
+            console.log(typeof(password));
             
-            $.ajax({
-        method: "POST",
-        url: "http://127.0.0.1:8000/api/getUserInfo",
-        dataType: "json",
-        data: { userId: username, userPassword: password },
-        beforeSend: function () { }
-    }).success(function(data){})
+    //         $.ajax({
+    //     method: "POST",
+    //     url: "http://127.0.0.1:8000/api/getUserInfo",
+    //     dataType: "json",
+    //     data: { userId: username, userPassword: password },
+    //     beforeSend: function () { }
+    // }).success(function(data){})
             /*try {
                 const response = await fetch("/api/getUserInfo", {
+                  
                     method: "POST",
-                    body: JSON.stringify({"userId": username,
-                        "userPassword": password})
+                      headers:{ 'Content-Type': 'application/json'
+                        },
+                    body:JSON.stringify({"userId": "E0001",
+                        "userPassword": "88888888"})
                         
                 });
                 const data = await response.json();
@@ -45,6 +48,21 @@
             } catch (err) {
                 console.log(err);
             }*/
+
+            try {
+                const response = await fetch("/api/getIndividualTransInfo?userId=E0001", {
+                  
+                    method: "GET",
+                      headers:{ 'Content-Type': 'application/json'
+                        },
+                    
+                        
+                });
+                const data = await response.json();
+                console.log(data);
+            } catch (err) {
+                console.log(err);
+            }
 
             //window.location.href = "./Staff1";
             //window.location.href = "./Boss1";

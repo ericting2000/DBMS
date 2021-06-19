@@ -125,7 +125,7 @@
               登入的人
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="../index.html">登出</a>
+              <a class="dropdown-item" href="./Landing">登出</a>
             </div>
           </div>
         </div>
@@ -136,12 +136,12 @@
       <nav class="side">
         <div class="logo">
           <div id="netflix">
-            <img src="../../asset/Logo.png" alt="" />
+            <img src="{{ asset('Logo.png') }}" alt="" />
           </div>
         </div>
         <div class="sidebar">
           <ul class="menu">
-            <a href="./personnelStaff1.html"><li>個人資料總覽</li></a>
+            <a href="./Staff1"><li>個人資料總覽</li></a>
             <a href=""
               ><li
                 style="
@@ -152,7 +152,7 @@
                 請假紀錄總覽
               </li></a
             >
-            <a href="./personnelStaff3.html">
+            <a href="./Staff3">
               <li>個人請假系統</li>
             </a>
           </ul>

@@ -26,6 +26,7 @@ class StockHolderController extends BaseController
     //@return Json $get_individual_info
     public function getIndividualInfo(Request $request)
     {
+      dd('123');
         $userInfo=$request;
         $userId=$userInfo->userId;
         $userPassword=$userInfo->userPassword;
@@ -80,6 +81,7 @@ class StockHolderController extends BaseController
 
     public function getTransInfo(Request $request)
     {
+     dd('123');
         $userId=$request->userId;
         if(empty($userId))
         {
