@@ -17,7 +17,7 @@ class Stockholder extends Model
 
     public function transaction()
     {
-        return this->hasMany('App\Models\Transaction','id');
+        //return this->hasMany('App\Models\Transaction','id');
     }
 
 }

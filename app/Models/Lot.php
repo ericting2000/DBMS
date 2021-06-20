@@ -16,6 +16,6 @@ class Lot extends Model
     protected $keyType = 'string';
     public function transaction()
     {
-        return this->belongsTo('App\Models\Transaction','serialNumber');
+        //return this->belongsTo('App\Models\Transaction','serialNumber');
     }
 }
