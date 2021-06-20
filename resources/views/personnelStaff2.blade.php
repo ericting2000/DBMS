@@ -125,7 +125,7 @@
               登入的人
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="../index.html">登出</a>
+              <a class="dropdown-item" href="./Landing">登出</a>
             </div>
           </div>
         </div>
@@ -136,13 +136,12 @@
       <nav class="side">
         <div class="logo">
           <div id="netflix">
-            <img src="../../asset/Logo.png" alt="" />
+            <img src="{{ asset('Logo.png') }}" alt="" />
           </div>
         </div>
         <div class="sidebar">
           <ul class="menu">
-            <a href="./personnelBoss1.html"><li>人事資料總覽</li></a>
-            <a href="./personnelBoss2.html"><li>人事資料編輯</li></a>
+            <a href="./Staff1"><li>個人資料總覽</li></a>
             <a href=""
               ><li
                 style="
@@ -153,9 +152,7 @@
                 請假紀錄總覽
               </li></a
             >
-            <a href="./personnelBoss4.html"><li>個人資料總覽</li></a>
-            <a href="./personnelBoss5.html"><li>個人請假紀錄</li></a>
-            <a href="./personnelBoss6.html">
+            <a href="./Staff3">
               <li>個人請假系統</li>
             </a>
           </ul>
@@ -196,17 +193,7 @@
 
           <div class="row">
             <div
-              class="col-md-4"
-              style="
-                background-color: rgba(108, 159, 200, 0.77);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              員工姓名
-            </div>
-            <div
-              class="col-md-4"
+              class="col-md-7"
               style="
                 background-color: rgba(108, 159, 200, 0.77);
                 text-align: center;
@@ -216,7 +203,7 @@
               請假日期
             </div>
             <div
-              class="col-md-4"
+              class="col-md-5"
               style="
                 background-color: rgba(108, 159, 200, 0.77);
                 text-align: center;
@@ -226,17 +213,7 @@
               請假類別
             </div>
             <div
-              class="col-md-4"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              陳曉華
-            </div>
-            <div
-              class="col-md-4"
+              class="col-md-7"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
@@ -246,7 +223,7 @@
               2021.04.28
             </div>
             <div
-              class="col-md-4"
+              class="col-md-5"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
@@ -256,27 +233,17 @@
               病假
             </div>
             <div
-              class="col-md-4"
+              class="col-md-7"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              陳曉華
+              2021.04.25
             </div>
             <div
-              class="col-md-4"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.04.28
-            </div>
-            <div
-              class="col-md-4"
+              class="col-md-5"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
@@ -286,27 +253,17 @@
               病假
             </div>
             <div
-              class="col-md-4"
+              class="col-md-7"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              陳曉華
+              2021.03.31
             </div>
             <div
-              class="col-md-4"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.04.28
-            </div>
-            <div
-              class="col-md-4"
+              class="col-md-5"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
@@ -316,27 +273,17 @@
               病假
             </div>
             <div
-              class="col-md-4"
+              class="col-md-7"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              陳曉華
+              2021.03.26
             </div>
             <div
-              class="col-md-4"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.04.28
-            </div>
-            <div
-              class="col-md-4"
+              class="col-md-5"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
@@ -346,27 +293,17 @@
               病假
             </div>
             <div
-              class="col-md-4"
+              class="col-md-7"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              陳曉華
+              2021.03.15
             </div>
             <div
-              class="col-md-4"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.04.28
-            </div>
-            <div
-              class="col-md-4"
+              class="col-md-5"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
@@ -376,27 +313,17 @@
               病假
             </div>
             <div
-              class="col-md-4"
+              class="col-md-7"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              陳曉華
+              2021.03.10
             </div>
             <div
-              class="col-md-4"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.04.28
-            </div>
-            <div
-              class="col-md-4"
+              class="col-md-5"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
@@ -406,27 +333,17 @@
               病假
             </div>
             <div
-              class="col-md-4"
+              class="col-md-7"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              陳曉華
+              2021.03.08
             </div>
             <div
-              class="col-md-4"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.04.28
-            </div>
-            <div
-              class="col-md-4"
+              class="col-md-5"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
@@ -436,27 +353,17 @@
               病假
             </div>
             <div
-              class="col-md-4"
+              class="col-md-7"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
                 padding: 5px 0;
               "
             >
-              陳曉華
+              2021.03.01
             </div>
             <div
-              class="col-md-4"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.04.28
-            </div>
-            <div
-              class="col-md-4"
+              class="col-md-5"
               style="
                 background-color: rgba(235, 235, 235, 0.63);
                 text-align: center;
@@ -487,5 +394,6 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    
   </body>
 </html>

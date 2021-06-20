@@ -17,7 +17,8 @@ class Employee extends Model
 
     public function leave()
     {
-        return this->hasMany('App\Models\LeaveSystem','id');
+        //return this->hasMany('App\Models\LeaveSystem','id');
+        //return [];
     }
 
 }
