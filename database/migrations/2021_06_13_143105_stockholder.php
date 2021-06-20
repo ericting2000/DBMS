@@ -17,10 +17,13 @@ class Stockholder extends Migration
             $table->char('id', 5);
             $table->string('password');
             $table->string('company');
+            $table->string('title');
             $table->string('name');
             $table->char('birth', 8);
-            $table->char('phoneNumber', 9);
+            $table->char('phoneNumber', 10);
             $table->string('address');
+            $table->integer('share')->default(0);
+            $table->integer('lot')->default(0);
             $table->primary('id');
         });
     }

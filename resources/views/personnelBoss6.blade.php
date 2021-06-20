@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE blade.php>
+<blade.php lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -36,7 +36,7 @@
       filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.25));
     }
 
-    html,
+    blade.php,
     body,
     box,
     content {
@@ -130,7 +130,7 @@
               登入的人
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="../index.html">登出</a>
+              <a class="dropdown-item" href="./Landing">登出</a>
             </div>
           </div>
         </div>
@@ -141,13 +141,16 @@
       <nav class="side">
         <div class="logo">
           <div id="netflix">
-            <img src="../../asset/Logo.png" alt="" />
+            <img src="{{ asset('Logo.png') }}" alt="" />
           </div>
         </div>
         <div class="sidebar">
           <ul class="menu">
-            <a href="./personnelStaff1.html"><li>個人資料總覽</li></a>
-            <a href="./personnelStaff2.html"><li>請假紀錄總覽</li></a>
+            <a href="./Boss1"><li>人事資料總覽</li></a>
+            <a href="./Boss2"><li>人事資料編輯</li></a>
+            <a href="./Boss3"><li>請假紀錄總覽</li></a>
+            <a href="./Boss4"><li>個人資料總覽</li></a>
+            <a href="./Boss5"><li>個人請假紀錄</li></a>
             <a href="">
               <li
                 style="
@@ -289,4 +292,4 @@
       });
     </script>
   </body>
-</html>
+</blade.php>

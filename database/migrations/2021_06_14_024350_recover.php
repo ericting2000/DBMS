@@ -15,6 +15,7 @@ class Recover extends Migration
     {
         Schema::create('recover', function (Blueprint $table) {
             $table->string('company');
+            $table->string('title');
             $table->string('reason');
         });
     }

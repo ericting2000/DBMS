@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE blade.php>
+<blade.php lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -14,6 +14,10 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
     />
 
     <title>Landing Page</title>
@@ -32,7 +36,7 @@
       filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.25));
     }
 
-    html,
+    blade.php,
     body,
     box,
     content {
@@ -55,6 +59,11 @@
 
     .modal-content {
       border-radius: 16px;
+    }
+
+    .modal-footer {
+      border-top: 0 none;
+      justify-content: center;
     }
 
     .logo {
@@ -125,8 +134,11 @@
     }
     .row .col-md-12 #p1,
     #p2,
-    #p3,
-    #p4 {
+    #p3 {
+      width: 25%;
+      margin: 0;
+    }
+    .row .col-md-12 #p4 {
       width: 25%;
       margin: 0;
     }
@@ -155,7 +167,7 @@
               登入的人
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <a class="dropdown-item" href="../index.html">登出</a>
+              <a class="dropdown-item" href="./Landing">登出</a>
             </div>
           </div>
         </div>
@@ -166,11 +178,12 @@
       <nav class="side">
         <div class="logo">
           <div id="netflix">
-            <img src="../../asset/Logo.png" alt="" />
+            <img src="{{ asset('Logo.png') }}" alt="" />
           </div>
         </div>
         <div class="sidebar">
           <ul class="menu">
+            <a href="./Boss1"><li>人事資料總覽</li></a>
             <a href=""
               ><li
                 style="
@@ -178,14 +191,13 @@
                   color: white;
                 "
               >
-                人事資料總覽
+                人事資料編輯
               </li></a
             >
-            <a href="./personnelBoss2.html"><li>人事資料編輯</li></a>
-            <a href="./personnelBoss3.html"><li>請假紀錄總覽</li></a>
-            <a href="./personnelBoss4.html"><li>個人資料總覽</li></a>
-            <a href="./personnelBoss5.html"><li>個人請假紀錄</li></a>
-            <a href="./personnelBoss6.html">
+            <a href="./Boss3"><li>請假紀錄總覽</li></a>
+            <a href="./Boss4"><li>個人資料總覽</li></a>
+            <a href="./Boss5"><li>個人請假紀錄</li></a>
+            <a href="./Boss6">
               <li>個人請假系統</li>
             </a>
           </ul>
@@ -193,7 +205,7 @@
       </nav>
 
       <content>
-        <p style="font-size: 36px; padding: 80px 50px 50px">人事資料總覽</p>
+        <p style="font-size: 36px; padding: 80px 50px 50px">人事資料編輯</p>
         <div class="data" style="display: block">
           <div
             class="search"
@@ -215,12 +227,28 @@
                 border-style: none;
                 color: white;
                 font-size: 14pt;
-                margin-left: 5px;
-                padding: 5px 35px;
+                margin-left: 10px;
+                padding: 5px 18px;
               "
               s
             >
               搜尋
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="
+                background-color: #003865;
+                border-style: none;
+                color: white;
+                font-size: 14pt;
+                margin-left: 10px;
+                padding: 5px 18px;
+              "
+              data-toggle="modal"
+              data-target="#newperson"
+            >
+              新增
             </button>
           </div>
 
@@ -430,7 +458,7 @@
               id="exampleModalCenterTitle"
               style="color: white; font-weight: 400"
             >
-              人事資料
+              人事資料編輯
             </h5>
             <button
               type="button"
@@ -450,24 +478,73 @@
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                張曉華
+                <input
+                  type="text"
+                  class="form-control"
+                  value="張曉華"
+                  style="width: 70%"
+                />
               </div>
-              <div class="col-md-5">員工</div>
+              <div class="col-md-5">
+                <select class="custom-select" value="員工">
+                  <option value="">員工</option>
+                  <option value="">主管</option>
+                  <option value="">老闆</option>
+                </select>
+              </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">ID</div>
-              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">生日</div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">密碼</div>
               <div
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                XXXXXXXX
+                <input
+                  type="text"
+                  class="form-control"
+                  value="XXXXXXXX"
+                  style="width: 70%"
+                />
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                19880813
+                <input
+                  type="text"
+                  class="form-control"
+                  value="abcdeefgh"
+                  style="width: 100%"
+                />
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">性別</div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">生日</div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <select class="custom-select" value="男" style="width: 70%">
+                  <option value="">男</option>
+                  <option value="">女</option>
+                </select>
+              </div>
+              <div
+                class="col-md-5"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <div class="input-group-btn" for="txtDate">
+                  <input
+                    type="text"
+                    name="date"
+                    class="form-control datepicker"
+                    value="yyyy.mm.dd"
+                    style="text-align: center"
+                  />
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+              </div>
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">
+                電子信箱
+              </div>
               <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">
                 到職日期
               </div>
@@ -475,13 +552,18 @@
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                男
+                <input
+                  type="text"
+                  class="form-control"
+                  value="12345@gmail.com"
+                  style="width: 70%"
+                />
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                20180801
+                2010.03.10
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">
                 聯絡地址
@@ -493,31 +575,254 @@
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                XXXXXXXXXXXX
+                <input
+                  type="text"
+                  class="form-control"
+                  value="XXXXXXXXXX"
+                  style="width: 70%"
+                />
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                02-1234-2345
+                <input
+                  type="text"
+                  class="form-control"
+                  value="0212345678"
+                  style="width: 100%"
+                />
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">手機</div>
-              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  value="0988888888"
+                  style="width: 70%"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="
+                background-color: #003865;
+                border-style: none;
+                padding: 6px 20px;
+              "
+            >
+              刪除
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="
+                background-color: #003865;
+                border-style: none;
+                padding: 6px 20px;
+              "
+            >
+              儲存
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Modal newperson-->
+    <div
+      class="modal fade bd-example-modal-lg"
+      id="newperson"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="exampleModalCenterTitle"
+              style="color: white; font-weight: 400"
+            >
+              新增人事資料
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="color: white; font-size: 30px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">姓名</div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">職稱</div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  value=""
+                  style="width: 70%"
+                />
+              </div>
+              <div class="col-md-5">
+                <select class="custom-select" value="請選擇">
+                  <option value="">員工</option>
+                  <option value="">主管</option>
+                  <option value="">老闆</option>
+                </select>
+              </div>
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">ID</div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">密碼</div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  value=""
+                  style="width: 70%"
+                />
+              </div>
+              <div
+                class="col-md-5"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  value=""
+                  style="width: 100%"
+                />
+              </div>
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">性別</div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">生日</div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <select class="custom-select" value="請選擇" style="width: 70%">
+                  <option value="">男</option>
+                  <option value="">女</option>
+                </select>
+              </div>
+              <div
+                class="col-md-5"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <div class="input-group-btn" for="txtDate">
+                  <input
+                    type="text"
+                    name="date"
+                    class="form-control datepicker"
+                    value="YYYY.MM.DD"
+                    style="text-align: center"
+                  />
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+              </div>
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">
                 電子信箱
+              </div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">
+                到職日期
               </div>
               <div
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                0988-888-888
+                <input
+                  type="text"
+                  class="form-control"
+                  value=""
+                  style="width: 70%"
+                />
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                12345@gmail.com
+                <div class="input-group-btn" for="txtDate">
+                  <input
+                    type="text"
+                    name="date"
+                    class="form-control datepicker"
+                    value="YYYY.MM.DD"
+                    style="text-align: center"
+                  />
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+              </div>
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">
+                聯絡地址
+              </div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">
+                市內電話
+              </div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  value=""
+                  style="width: 70%"
+                />
+              </div>
+              <div
+                class="col-md-5"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  value=""
+                  style="width: 100%"
+                />
+              </div>
+              <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">手機</div>
+              <div
+                class="col-md-7"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  value=""
+                  style="width: 70%"
+                />
               </div>
             </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              style="
+                background-color: #003865;
+                border-style: none;
+                padding: 6px 20px;
+              "
+            >
+              儲存新增
+            </button>
           </div>
         </div>
       </div>
@@ -539,6 +844,14 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <!---date picker-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+    <script>
+      $('.datepicker').datepicker({
+        format: 'yyyy.mm.dd',
+      });
+    </script>
     <!-- modal show-->
     <script>
       $('a[href$="#detail"]').on('click', function () {
@@ -546,4 +859,4 @@
       });
     </script>
   </body>
-</html>
+</blade.php>
