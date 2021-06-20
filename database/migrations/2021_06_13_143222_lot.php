@@ -14,7 +14,6 @@ class Lot extends Migration
     public function up()
     {
         Schema::create('lot', function (Blueprint $table) {
-            $table->string('type');
             $table->integer('lot')->nullable();
             $table->string('serialNumber');
             $table->primary('serialNumber');

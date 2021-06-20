@@ -80,6 +80,7 @@ class StockHolderController extends BaseController
 
     public function getTransInfo(Request $request)
     {
+     //dd('123');
         $userId=$request->userId;
         if(empty($userId))
         {
