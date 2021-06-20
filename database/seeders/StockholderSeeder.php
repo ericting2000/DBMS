@@ -15,12 +15,12 @@ class StockholderSeeder extends Seeder
 
         $data = [
             [
-                "id" => "E0001",
-                "password" => "password",
+                "id" => "S0001",
+                "password" => "00000000",
                 "company" => "00",
                 "title" => "00",
                 "name" => "00",
-                "birth" => "00",
+                "birth" => "00000000",
                 "phoneNumber" => "00",
                 "address" => "00",
                 "share" => "00",

@@ -19,8 +19,8 @@ class Employee extends Migration
             $table->string('name');
             $table->string('company');
             $table->char('birth', 8);
-            $table->char('cellPhone', 9);
-            $table->char('localPhone', 8);
+            $table->char('cellPhone', 10);
+            $table->char('localPhone', 10);
             $table->string('email');
             $table->string('gender');
             $table->string('title');

@@ -109,8 +109,96 @@
       width: 90%;
     }
   </style>
+  <script>
+    function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+          return "";
+        }
 
-  <body>
+        async function getdata() {
+            let username = getCookie("user");
+            let password = getCookie("pswd") 
+            try {
+                const response = await fetch("/api/getUserInfo", {
+                  
+                    method: "POST",
+                      headers:{ 'Content-Type': 'application/json'
+                        },
+                    body:JSON.stringify({"userId":username ,
+                        "userPassword": password})
+                        
+                });
+                const data = await response.json();
+                if(data)
+                  console.log(data);
+                document.getElementById("name").innerHTML=data.name;
+                document.getElementById("ID").innerHTML=data.id;
+                if(data.gender === "male"){
+                  document.getElementById("gender").innerHTML="男";
+                }else{
+                  document.getElementById("gender").innerHTML="女";
+                }
+                let B = data.birth.slice(0,4) + "." + data.birth.slice(4,6) + "." + data.birth.slice(6)
+                document.getElementById("birth").innerHTML=B;
+                document.getElementById("title").innerHTML=data.title;
+                document.getElementById("onboard").innerHTML=data.onBoardTime.replace(/-/g, ".");
+                document.getElementById("address").innerHTML=data.address;
+                let L = data.localPhone.slice(0, 2) + "-" + data.localPhone.slice(2,6) + "-" + data.localPhone.slice(6)
+                document.getElementById("local").innerHTML=L;
+                let C = data.cellPhone.slice(0, 4) + "-" + data.cellPhone.slice(4,7) + "-" + data.cellPhone.slice(7)
+                document.getElementById("cell").innerHTML=C;
+                document.getElementById("mail").innerHTML=data.email;
+            }catch (err) {
+                console.log(err);
+            }
+
+        }
+    async function Modpassword() {
+            let username = getCookie("user");
+            let oldpassword = document.getElementById("oldpassword").value;
+            let newpassword = document.getElementById("newpassword").value;
+            let confirmnewpassword = document.getElementById("confirmnewpassword").value;
+            console.log("舊密碼：" + oldpassword,typeof(oldpassword));
+            console.log("新密碼：" + newpassword,typeof(newpassword));
+            console.log("確認新密碼：" + confirmnewpassword,typeof(confirmnewpassword));
+
+            if(newpassword.toString() !== confirmnewpassword.toString()){
+              alert("新密碼與確認密碼不符，請重新輸入！")
+              return;
+            }
+            try {
+                const response = await fetch("/api/modifyPassword", {
+                  
+                    method: "POST",
+                      headers:{ 'Content-Type': 'application/json'
+                        },
+                    body:JSON.stringify({"userId":username ,
+                        "userPassword": oldpassword,
+                      "newPassword": newpassword})
+                        
+                });
+                const data = await response.json();
+                console.log(data);
+                alert("修改成功！");
+                $('#passwordchange').modal('hide');
+            } catch (err) {
+                console.log(err);
+            }
+            
+        }
+  </script>
+  <body onload="getdata()">
     <header>
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -180,16 +268,15 @@
             <div
               class="col-md-10:"
               style="font-size: 28px; padding: 45px 50px 90px"
+              id="name"
             >
-              姓名
             </div>
           </div>
 
           <div class="row">
             <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">ID</div>
             <div class="col-md-3" style="color: rgba(0, 0, 0, 0.5)">密碼</div>
-            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px">
-              XXXXXXX
+            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px" id="ID">            
             </div>
             <div class="col-md-3">
               <button
@@ -212,21 +299,17 @@
             </div>
             <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">性別</div>
             <div class="col-md-3" style="color: rgba(0, 0, 0, 0.5)">生日</div>
-            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px">
-              男
+            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px" id="gender">
             </div>
-            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px">
-              19880813
+            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px" id="birth">
             </div>
             <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">職稱</div>
             <div class="col-md-3" style="color: rgba(0, 0, 0, 0.5)">
               到職日期
             </div>
-            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px">
-              員工
+            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px" id="title">
             </div>
-            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px">
-              20180801
+            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px" id="onboard">
             </div>
             <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">
               聯絡地址
@@ -234,26 +317,23 @@
             <div class="col-md-3" style="color: rgba(0, 0, 0, 0.5)">
               市內電話
             </div>
-            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px">
-              XXXXXXXXXXXX
+            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px" id="address">
             </div>
-            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px">
-              02-1234-2345
+            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px" id="local">
             </div>
             <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">手機</div>
             <div class="col-md-3" style="color: rgba(0, 0, 0, 0.5)">
               電子信箱
             </div>
-            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px">
-              0988-888-888
+            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px" id="cell">
             </div>
-            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px">
-              12345@gmail.com
+            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px" id="mail">
             </div>
           </div>
         </div>
       </content>
     </box>
+
     <div
       class="modal fade"
       id="passwordchange"
@@ -285,31 +365,34 @@
           <div class="modal-body">
             <div class="input-group mb-3">
               <input
-                type="text"
+                type="password"
                 class="form-control"
                 placeholder="請輸入舊密碼"
                 aria-label="oldpassword"
                 aria-describedby="basic-addon1"
+                id="oldpassword"
               />
             </div>
 
             <div class="input-group mb-3">
               <input
-                type="text"
+                type="password"
                 class="form-control"
                 placeholder="請輸入新密碼"
                 aria-label="newpassword"
                 aria-describedby="basic-addon1"
+                id="newpassword"
               />
             </div>
 
             <div class="input-group mb-3">
               <input
-                type="text"
+                type="password"
                 class="form-control"
                 placeholder="請再次輸入新密碼"
                 aria-label="newpassword"
                 aria-describedby="basic-addon1"
+                id="confirmnewpassword"
               />
             </div>
           </div>
@@ -323,6 +406,7 @@
                 border-style: none;
                 border-radius: 10px;
               "
+              onclick="Modpassword()"
             >
               確認修改
             </button>
@@ -330,7 +414,6 @@
         </div>
       </div>
     </div>
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -348,5 +431,13 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script>
+          $(document).ready(function() {
+            $("#passwordchange").on("hidden.bs.modal", function () {
+             $(".modal-body input").val("");
+            });
+          });
+      
+    </script>
   </body>
 </bl>

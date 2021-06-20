@@ -131,8 +131,11 @@
       margin: 0;
     }
   </style>
+  <script>
+          
+    </script>
 
-  <body>
+  <body onload="getdata()">
     <header>
       <nav class="navbar navbar-default">
         <div class="container-fluid">

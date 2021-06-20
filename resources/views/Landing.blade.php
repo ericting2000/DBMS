@@ -18,54 +18,36 @@
 
         <title>Landing Page</title>
     </head>
-
     <script>
         async function login() {
             let username = document.getElementById("Username").value;
             let password = document.getElementById("Password").value;
-            console.log('1111',typeof(username));
-            console.log(typeof(password));
-            
-    //         $.ajax({
-    //     method: "POST",
-    //     url: "http://127.0.0.1:8000/api/getUserInfo",
-    //     dataType: "json",
-    //     data: { userId: username, userPassword: password },
-    //     beforeSend: function () { }
-    // }).success(function(data){})
+            document.cookie = "user=" + username.toString();
+            document.cookie = "pswd=" + password.toString();
             try {
                 const response = await fetch("/api/getUserInfo", {
                   
                     method: "POST",
                       headers:{ 'Content-Type': 'application/json'
                         },
-                    body:JSON.stringify({"userId": "E0001",
-                        "userPassword": "88888888"})
-                        
-                });
-               // const data = await response.json();
-                console.log(response);
-            } catch (err) {
-                console.log(err);
-            }
-
-            /*try {
-                const response = await fetch("/api/getIndividualTransInfo?userId=E0001", {
-                  
-                    method: "GET",
-                      headers:{ 'Content-Type': 'application/json'
-                        },
-                    
+                    body:JSON.stringify({"userId":username ,
+                        "userPassword": password})
                         
                 });
                 const data = await response.json();
-                console.log(data);
+                if(data)
+                  console.log(data);
+                if(data.title ==="CEO" || data.title ==="MANAGER" || data.title ==="HR"){
+                  window.location.href = "./Boss1";
+                } 
+                else{
+                  window.location.href = "./Staff1";
+               }
             } catch (err) {
                 console.log(err);
+                alert("帳號或密碼不可為空值，請檢查是否有輸入錯誤！");
             }
-            */
-            //window.location.href = "./Staff1";
-            //window.location.href = "./Boss1";
+
         }
     </script>
     <style>
@@ -328,6 +310,24 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"
         ></script>
+        <script>
+          $(document).ready(function() {
+            $("#personnel").on("hidden.bs.modal", function () {
+             $(".modal-body input").val("");
+            });
+          });
+      
+         </script>
+         <script>
+            $(document).ready(function() {
+            $("#stock").on("hidden.bs.modal", function () {
+             $(".modal-body input").val("");
+            });
+          });
+          
+      
+         </script>
+        
         
     </body>
 </html>

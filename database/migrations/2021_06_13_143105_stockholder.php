@@ -20,7 +20,7 @@ class Stockholder extends Migration
             $table->string('title');
             $table->string('name');
             $table->char('birth', 8);
-            $table->char('phoneNumber', 9);
+            $table->char('phoneNumber', 10);
             $table->string('address');
             $table->integer('share')->default(0);
             $table->integer('lot')->default(0);
