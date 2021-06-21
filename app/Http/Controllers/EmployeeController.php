@@ -120,6 +120,21 @@ class EmployeeController extends BaseController
         }
     }
     
+    public function deleteEmployee(Request $request)
+    {
+        $userInfo=$request;
+        $userId=$userInfo->userId;
+        if(empty($userId)){
+            return response('error: exist empty',400);
+        }
+        $delete=$this->EmployeeService->deleteEmployee($userId);
+        if($delete){
+            return response()->json($delete,200);
+        }
+        else{
+            return response('error: data error',400);
+        }
+    }
 /*
     public function getIndividualInfo(Request $request)
     {

@@ -30,6 +30,9 @@ Route::post('/getEmployeeInfo','App\Http\Controllers\EmployeeController@getEmplo
 //人事資料總覽(新增)
 Route::post('/addNewEmployee','App\Http\Controllers\EmployeeController@insertEmployee');
 
+//人事資料總覽(刪除)
+Route::post('/deleteEmployee','App\Http\Controllers\EmployeeController@deleteEmployee');
+
 //個人請假紀錄
 Route::get('/getLeaveRecord','App\Http\Controllers\EmployeeController@getLeaveData');
 

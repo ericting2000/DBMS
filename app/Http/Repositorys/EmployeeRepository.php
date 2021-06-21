@@ -95,6 +95,17 @@ class EmployeeRepository
         }
         else return false;
     }
+
+    public function deleteEmployee($userId)
+    {
+        if($userId[0]=='E')
+        {
+            $affected = DB::table('Employee')->where('id', '=', $userId)->delete();
+            if($affected) return true;
+            else return false;
+        }
+        else return false;
+    }
   /*
     public function getIndividualData($userId, $userPassword)
     {

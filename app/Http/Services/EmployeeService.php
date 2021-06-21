@@ -35,7 +35,10 @@ class EmployeeService
         return $this->EmployeeRepository->insertEmployee($userId, $name, $userPassword, $birth, $cell,
                                                     $local, $gender, $company, $email, $title, $time, $address);
     }
-                                    
+    public function deleteEmployee($userId)   
+    {
+        return $this->EmployeeRepository->deleteEmployee($userId);
+    }              
 /*
     public function getIndividualData($userId, $userPassword)
     {
