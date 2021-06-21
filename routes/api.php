@@ -30,6 +30,12 @@ Route::get('/getLeaveRecord','App\Http\Controllers\EmployeeController@getLeaveDa
 //人事資料總覽
 Route::post('/getEmployeeInfo','App\Http\Controllers\EmployeeController@getEmployeeInfo');
 
+//員工請假紀錄
+Route::post('/getAllLeaveRecord','App\Http\Controllers\EmployeeController@getAllLeaveData');
+
+//請假
+Route::post('/makeLeave','App\Http\Controllers\EmployeeController@makeLeave');
+
 //股東資料總覽
 Route::post('/getStockHolderInfo','App\Http\Controllers\StockHolderController@getStockHolderInfo');
 

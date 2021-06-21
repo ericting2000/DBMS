@@ -21,16 +21,39 @@ class EmployeeRepository
     public function getEmployeeInfo($userId, $userPassword)
     {
 
-        $boss=Employee::where('id','=',$userId)->where('password','=',$userPassword)
-                          ->where('title','=','CEO')
-                          ->orWhere(function($query) {
-                            $query->where('title', 'HR')
-                                  ->where('title', 'MANAGER');
-                            })->first();
+        $boss=Employee::where('id','=',$userId)->where('password','=',$userPassword)->first();
         if($boss)
         {
             $allEmployee=DB::table('Employee')->get();
             return $allEmployee;
+        }
+        else return false;
+    }
+
+    public function getAllLeaveData($userId, $userPassword)
+    {
+        $boss=Employee::where('id','=',$userId)->where('password','=',$userPassword)->first();
+        $leaveData=DB::table('LeaveSystem')->get();
+        if($leaveData) return $leaveData;
+        else return false;
+    }
+
+    public function makeLeave($userId, $leaveDateStart, $leaveEnd, $leaveReason)
+    {
+        if($userId[0]=='E')
+        {
+            $findName=Employee::where('id','=',$userId)->first();
+            $name=$findName->name;
+            //dd($name);
+            $affected = DB::table('LeaveSystem')->where('id', '=', $userId)->insert(
+                            array('id' => $userId,
+                                  'name' => $name,
+                                  'dateStart' => $leaveDateStart,
+                                  'dateEnd' => $leaveEnd,
+                                  'leaveReason' => $leaveReason)
+                            );
+            if($affected) return true;
+            else return false;
         }
         else return false;
     }

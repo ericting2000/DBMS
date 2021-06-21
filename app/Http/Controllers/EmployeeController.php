@@ -54,6 +54,43 @@ class EmployeeController extends BaseController
             return response('error: data error',400);
         }
     }
+
+    public function getAllLeaveData(Request $request)
+    {
+        $userInfo=$request;
+        $userId=$userInfo->userId;
+        $userPassword=$userInfo->userPassword;
+        if(empty($userId || $userPassword)){
+            return response('error: exist empty',400);
+        }
+        $get_leave_info=$this->EmployeeService->getAllLeaveData($userId, $userPassword);
+        if($get_leave_info){
+            return response()->json($get_leave_info,200);
+        }
+        else{
+            return response('error: data error',400);
+        }
+    }
+
+    public function makeLeave(Request $request)
+    {
+        $userInfo=$request;
+        $userId=$userInfo->userId;
+        $leaveDateStart=$userInfo->leaveDateStart;
+        $leaveEnd=$userInfo->leaveDateEnd;
+        $leaveReason=$userInfo->leaveReason;
+        if(empty($userId || $leaveDateStart || $leaveEnd || $leaveReason)){
+            return response('error: exist empty',400);
+        }
+        $get_leave_info=$this->EmployeeService->makeLeave($userId, $leaveDateStart, $leaveEnd, $leaveReason);
+        if($get_leave_info){
+            return response()->json($get_leave_info,200);
+        }
+        else{
+            return response('error: data error',400);
+        }
+    }
+    
     
 /*
     public function getIndividualInfo(Request $request)
