@@ -148,6 +148,169 @@
     }
   </style>
   <script>
+    let response = new Object;
+    let data = new Object;
+    async function add(){
+      let password =document.getElementById("passwordn").value.toString();
+      let name = document.getElementById("namen").value.toString();
+      let id = document.getElementById("IDn").value.toString();
+      let birth = $("#birthn").datepicker().val()
+      let cell = document.getElementById("celln").value.toString();
+      let address = document.getElementById("addressn").value.toString();
+      let gender = document.getElementById("gendern").value.toString();
+      let local = document.getElementById("localn").value.toString();
+      let title = document.getElementById("titlen").value.toString();
+      let email = document.getElementById("mailn").value.toString();
+      let company = document.getElementById("company").value.toString();
+      let onboard = $("#onboardn").datepicker().val()
+      //onboard = onboard.substr(0,4) + onboard.substr(5,2) + onboard.substr(8,2);
+      //birth = birth.substr(0,4) + birth.substr(5,2) + birth.substr(8,2);
+      console.log(password);
+      console.log(name);
+      console.log(id);
+      console.log(birth);
+      console.log(cell);
+      console.log(address);
+      console.log(gender);
+      console.log(local);
+      console.log(title);
+      console.log(email);
+      console.log(company);
+      console.log(onboard)
+      try{
+        response = await fetch("/api/addNewEmployee",{
+          method: "POST",
+          headers:{ 'Content-Type': 'application/json'
+                  },
+          body:JSON.stringify({
+                        "userPassword": password,
+                    "userName":name ,
+                    "userId":id ,
+                    "userBirth":birth ,
+                  "userCellPhone":cell ,
+                  "userAddress":address ,
+                  "userGender":gender ,
+                  "userLocalPhone":local ,
+                  "userTitle":title ,
+                  "userEmail":email ,
+                  "company":company ,
+                  "onBoardTime":onboard})
+
+        });
+        data = await response.json();
+        console.log(data);
+      }catch(err){
+        console.log(err)
+      }
+
+    }
+    async function save(){
+       let password =document.getElementById("password").value.toString();
+      let name = document.getElementById("name").value.toString();
+      let id = document.getElementById("ID").value.toString();
+      let birth = $("#birth").datepicker().val()
+      let cell = document.getElementById("cell").value.toString();
+      let address = document.getElementById("address").value.toString();
+      let gender = document.getElementById("gender").value.toString();
+      let local = document.getElementById("local").value.toString();
+      let title = document.getElementById("title").value.toString();
+      let email = document.getElementById("mail").value.toString();
+      //onboard = onboard.substr(0,4) + onboard.substr(5,2) + onboard.substr(8,2);
+      //birth = birth.substr(0,4) + birth.substr(5,2) + birth.substr(8,2);
+      console.log(password);
+      console.log(name);
+      console.log(id);
+      console.log(birth);
+      console.log(cell);
+      console.log(address);
+      console.log(gender);
+      console.log(local);
+      console.log(title);
+      console.log(email);
+      console.log(company);
+      console.log(onboard)
+      try{
+        response = await fetch("/api/modifyEmployee",{
+          method: "POST",
+          headers:{ 'Content-Type': 'application/json'
+                  },
+          body:JSON.stringify({
+                        "userPassword": password,
+                    "userName":name ,
+                    "userId":id ,
+                    "userBirth":birth ,
+                  "userCellPhone":cell ,
+                  "userAddress":address ,
+                  "userGender":gender ,
+                  "userLocalPhone":local ,
+                  "userTitle":title ,
+                  "userEmail":email ,
+                  })
+
+        });
+        data = await response.json();
+        console.log(data);
+        getdata();
+      }catch(err){
+        console.log(err)
+      }
+    }
+    function wipe(){
+      let id = document.getElementById("id")
+      console.log()
+    }
+    function sdata(data_filter){
+      for(let i = 0; i < data_filter.length; i++){
+          if(i == 0)
+            document.getElementById("personneldata").innerHTML ="";
+          //if()
+          var row = "<a href='#detail' data-toggle='modal' data-target='#detail' id=" + i + "><div class='row'>"
+
+          row += "<div class='col-md-12' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;display: flex;' >"
+          row += "<p id='p1'>"+ data_filter[i].name +"</p>"
+          let gen = data_filter[i].gender;
+          if(gen === "male")
+            gen = "男";
+          if(gen === "female")
+            gen = "女";
+          row +=  "<p id='p2'>" + gen + "</p>"
+          let birth = data_filter[i].birth.slice(0,4) + "." + data_filter[i].birth.slice(4,6) + "." + data_filter[i].birth.slice(6);
+          row += "<p id='p3'>" + birth + "</p>"
+          row += "<p id='p4'>" + data_filter[i].title + "</p>"
+          row += "</div></div></a>"
+          console.log(row);
+          document.getElementById("personneldata").innerHTML += row;
+          document.getElementById("name").value=data_filter[i].name;
+          document.getElementById("ID").value=data_filter[i].id;
+          document.getElementById("password").value=data_filter[i].password;
+          let B = data_filter[i].birth.slice(0,4) + "." + data_filter[i].birth.slice(4,6) + "." + data_filter[i].birth.slice(6)
+          document.getElementById("birth").value=B;
+          document.getElementById("title").value=data_filter[i].title;
+          document.getElementById("onboard").innerHTML=data_filter[i].onBoardTime.replace(/-/g, ".");
+          document.getElementById("address").value=data_filter[i].address;
+          let L = data_filter[i].localPhone.slice(0, 2) + "-" + data_filter[i].localPhone.slice(2,6) + "-" + data_filter[i].localPhone.slice(6)
+          document.getElementById("local").value=L;
+          let C = data_filter[i].cellPhone.slice(0, 4) + "-" + data_filter[i].cellPhone.slice(4,7) + "-" + data_filter[i].cellPhone.slice(7)
+          document.getElementById("cell").value=C;
+          document.getElementById("mail").value=data_filter[i].email;
+          console.log("modaldeail_activate")
+        }
+        
+    }
+    function threshold_g(data, input){
+      return data.filter( data => data.gender === input);
+    }
+    function threshold_n(data, input){
+      input = input[0].toUpperCase() + input.slice(1)
+      return data.filter( data => data.name === input);
+    }
+    function threshold_b(data, input){
+      return data.filter( data => data.birth === input);
+    }
+    function threshold_t(data, input){
+      input = input.toUpperCase();
+      return data.filter( data => data.title === input);
+    }
     function getCookie(cname) {
             var name = cname + "=";
             var decodedCookie = decodeURIComponent(document.cookie);
@@ -163,9 +326,92 @@
             }
           return "";
           }
-    let getdata = () => {
+    async function getdata() {
       document.getElementById("nametag").innerHTML = getCookie("name");
+      let username = getCookie("user");
+      let password = getCookie("pswd");
+      try{
+        response = await fetch("/api/getEmployeeInfo",{
+          method: "POST",
+          headers:{ 'Content-Type': 'application/json'
+                  },
+          body:JSON.stringify({"userId":username ,
+                        "userPassword": password})
+        });
+        data = await response.json();
+        for(let i = 0; i < data.length; i++){
+          var row = "<a href='#detail' data-toggle='modal' data-target='#detail' id=" + i + " onclick='modaldetail(" + i + ")'><div class='row'>"
+
+          row += "<div class='col-md-12' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;display: flex;' >"
+          row += "<p id='p1'>"+ data[i].name +"</p>"
+          let gen = data[i].gender;
+          if(gen === "male")
+            gen = "男";
+          if(gen === "female")
+            gen = "女";
+          row +=  "<p id='p2'>" + gen + "</p>"
+          let birth = data[i].birth.slice(0,4) + "." + data[i].birth.slice(4,6) + "." + data[i].birth.slice(6);
+          row += "<p id='p3'>" + birth + "</p>"
+          row += "<p id='p4'>" + data[i].title + "</p>"
+          row += "</div></div></a>"
+          console.log(row);
+          document.getElementById("personneldata").innerHTML += row;
+        }
+      }catch(err){
+        console.log(err)
+      }
     }
+
+    function search(){
+      let input = document.getElementById("sinput").value;
+      if(input === ""){
+        document.getElementById("personneldata").innerHTML ="";
+        getdata();
+        return;
+      }
+      let data_filter
+      console.log(input);
+      if(input === "男" || input === "女"){
+        if(input === "男")
+        input = "male"
+        if(input === "女")
+        input = "female"
+        data_filter = threshold_g(data, input);
+        sdata(data_filter);
+      }
+      else{
+        data_filter = threshold_b(data, input);
+        if(data_filter !== {})
+          sdata(data_filter);
+        data_filter = threshold_n(data, input);
+        if(data_filter !== {})
+          sdata(data_filter);
+        data_filter = threshold_t(data, input);
+        if(data_filter !== {})
+          sdata(data_filter);
+        
+      }
+      
+    }
+    function modaldetail(i){
+
+      document.getElementById("name").value=data[i].name;
+      document.getElementById("ID").value=data[i].id;
+      document.getElementById("password").value=data[i].password;
+      let B = data[i].birth.slice(0,4) + "." + data[i].birth.slice(4,6) + "." + data[i].birth.slice(6)
+      document.getElementById("birth").value=B;
+      document.getElementById("title").value=data[i].title;
+      document.getElementById("onboard").innerHTML=data[i].onBoardTime.replace(/-/g, ".");
+      document.getElementById("address").value=data[i].address;
+      let L = data[i].localPhone.slice(0, 2) + "-" + data[i].localPhone.slice(2,6) + "-" + data[i].localPhone.slice(6)
+      document.getElementById("local").value=L;
+      let C = data[i].cellPhone.slice(0, 4) + "-" + data[i].cellPhone.slice(4,7) + "-" + data[i].cellPhone.slice(7)
+      document.getElementById("cell").value=C;
+      document.getElementById("mail").value=data[i].email;
+      console.log("modaldeail_activate")
+    }
+
+    
   </script>
 
   <body onload="getdata()">
@@ -231,7 +477,7 @@
 
       <content>
         <p style="font-size: 36px; padding: 80px 50px 50px">人事資料編輯</p>
-        <div class="data" style="display: block">
+        <div class="data" style="display: block;">
           <div
             class="search"
             style="display: flex; padding-bottom: 10px; margin-left: -15px"
@@ -239,10 +485,11 @@
             <input
               type="text"
               class="form-control"
-              placeholder="關鍵字搜尋(姓名、生日、電話..)"
+              placeholder="關鍵字搜尋(姓名、性別、生日八碼、職稱)"
               aria-label="newpassword"
               aria-describedby="basic-addon1"
               style="width: 80%"
+              id="sinput"
             />
             <button
               type="button"
@@ -255,7 +502,7 @@
                 margin-left: 10px;
                 padding: 5px 18px;
               "
-              s
+              onclick="search()"
             >
               搜尋
             </button>
@@ -319,150 +566,9 @@
               職稱
             </div>
           </div>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
+          <div id="personneldata">
+
+          </div>
         </div>
       </content>
     </box>
@@ -506,15 +612,17 @@
                 <input
                   type="text"
                   class="form-control"
-                  value="張曉華"
+                  value=""
                   style="width: 70%"
+                  id="name"
                 />
               </div>
               <div class="col-md-5" >
-                <select class="custom-select" value="員工">
-                  <option value="">員工</option>
-                  <option value="">主管</option>
-                  <option value="">老闆</option>
+                <select class="custom-select" value="" id="title">
+                  <option value="STAFF">員工</option>
+                  <option value="MANAGER">主管</option>
+                  <option value="CEO">老闆</option>
+                   <option value="HR">人資</option>
                 </select>
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">ID</div>
@@ -526,8 +634,9 @@
                 <input
                   type="text"
                   class="form-control"
-                  value="XXXXXXXX"
+                  value=""
                   style="width: 70%"
+                  id="ID"
                 />
               </div>
               <div
@@ -537,8 +646,9 @@
                 <input
                   type="text"
                   class="form-control"
-                  value="abcdeefgh"
+                  value=""
                   style="width: 100%"
+                  id="password"
                 />
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">性別</div>
@@ -547,9 +657,9 @@
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                <select class="custom-select" value="男" style="width: 70%">
-                  <option value="">男</option>
-                  <option value="">女</option>
+                <select class="custom-select" value="" style="width: 70%" id="gender">
+                  <option value="male">男</option>
+                  <option value="female">女</option>
                 </select>
               </div>
               <div
@@ -561,8 +671,9 @@
                     type="text"
                     name="date"
                     class="form-control datepicker"
-                    value="yyyy.mm.dd"
+                    value=""
                     style="text-align: center"
+                    id="birth"
                   />
                   <span class="glyphicon glyphicon-calendar"></span>
                 </div>
@@ -580,15 +691,17 @@
                 <input
                   type="text"
                   class="form-control"
-                  value="12345@gmail.com"
+                  value=""
                   style="width: 70%"
+                  id="mail"
                 />
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
+                id="onboard"
               >
-                2010.03.10
+                
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">
                 聯絡地址
@@ -603,8 +716,9 @@
                 <input
                   type="text"
                   class="form-control"
-                  value="XXXXXXXXXX"
+                  value=""
                   style="width: 70%"
+                  id="address"
                 />
               </div>
               <div
@@ -614,8 +728,9 @@
                 <input
                   type="text"
                   class="form-control"
-                  value="0212345678"
+                  value=""
                   style="width: 100%"
+                  id="local"
                 />
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">手機</div>
@@ -626,8 +741,9 @@
                 <input
                   type="text"
                   class="form-control"
-                  value="0988888888"
+                  value=""
                   style="width: 70%"
+                  id="cell"
                 />
               </div>
             </div>
@@ -641,6 +757,7 @@
                 border-style: none;
                 padding: 6px 20px;
               "
+              onclick="wipe()"
             >
               刪除
             </button>
@@ -653,6 +770,7 @@
                 border-style: none;
                 padding: 6px 20px;
               "
+              onclick="save()"
             >
               儲存
             </button>
@@ -703,13 +821,15 @@
                   class="form-control"
                   value=""
                   style="width: 70%"
+                  id="namen"
                 />
               </div>
               <div class="col-md-5" >
-                <select class="custom-select" value="請選擇">
-                  <option value="">員工</option>
-                  <option value="">主管</option>
-                  <option value="">老闆</option>
+                <select class="custom-select" value="請選擇" id="titlen">
+                  <option value="STAFF">員工</option>
+                  <option value="MANAGER">主管</option>
+                  <option value="CEO">老闆</option>
+                  <option value="HR">人資</option>
                 </select>
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">ID</div>
@@ -723,6 +843,7 @@
                   class="form-control"
                   value=""
                   style="width: 70%"
+                  id="IDn"
                 />
               </div>
               <div
@@ -734,6 +855,7 @@
                   class="form-control"
                   value=""
                   style="width: 100%"
+                  id="passwordn"
                 />
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">性別</div>
@@ -742,22 +864,23 @@
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                <select class="custom-select" value="請選擇" style="width: 70%">
-                  <option value="">男</option>
-                  <option value="">女</option>
+                <select class="custom-select" value="請選擇" style="width: 70%" id="gendern">
+                  <option value="male">男</option>
+                  <option value="female">女</option>
                 </select>
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                <div class="input-group-btn" for="txtDate">
+                <div class="input-group-btn" for="txtDate" >
                   <input
                     type="text"
                     name="date"
                     class="form-control datepicker"
-                    value="YYYY.MM.DD"
+                    value="YYYY-MM-DD"
                     style="text-align: center"
+                    id="birthn"
                   />
                   <span class="glyphicon glyphicon-calendar"></span>
                 </div>
@@ -777,19 +900,21 @@
                   class="form-control"
                   value=""
                   style="width: 70%"
+                  id="mailn"
                 />
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                <div class="input-group-btn" for="txtDate">
+                <div class="input-group-btn" for="txtDate" >
                   <input
                     type="text"
                     name="date"
                     class="form-control datepicker"
-                    value="YYYY.MM.DD"
+                    value="YYYY-MM-DD"
                     style="text-align: center"
+                    id="onboardn"
                   />
                   <span class="glyphicon glyphicon-calendar"></span>
                 </div>
@@ -809,6 +934,7 @@
                   class="form-control"
                   value=""
                   style="width: 70%"
+                  id="addressn"
                 />
               </div>
               <div
@@ -820,9 +946,13 @@
                   class="form-control"
                   value=""
                   style="width: 100%"
+                  id="localn"
                 />
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">手機</div>
+              <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">
+                公司
+              </div>
               <div
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
@@ -832,6 +962,19 @@
                   class="form-control"
                   value=""
                   style="width: 70%"
+                  id="celln"
+                />
+              </div>
+              <div
+                class="col-md-5"
+                style="font-size: 14pt; padding-bottom: 15px"
+              >
+                <input
+                  type="text"
+                  class="form-control"
+                  value=""
+                  style="width: 100%"
+                  id="company"
                 />
               </div>
             </div>
@@ -845,6 +988,7 @@
                 border-style: none;
                 padding: 6px 20px;
               "
+              onclick="add()"
             >
               儲存新增
             </button>
@@ -873,8 +1017,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script>
+          $(document).ready(function() {
+            $("#newperson").on("hidden.bs.modal", function () {
+             $(".modal-body input").val("");
+            });
+          });
+      
+    </script>
+    <script>
       $('.datepicker').datepicker({
-        format: 'yyyy.mm.dd',
+        format: 'yyyy-mm-dd',
       });
     </script>
     <!-- modal show-->

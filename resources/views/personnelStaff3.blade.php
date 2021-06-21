@@ -162,13 +162,24 @@
         async function makeleave(){
           document.getElementById("nametag").innerHTML = getCookie("name");
           let username = getCookie("user");
-          let leavedateS = document.getElementById("inputs").value;
-          let leavedateE = document.getElementById("inpute").value;
-          let leavereason = document.getElementById("reason").value;
-          console.log(username);
+          let leavedateS = document.getElementById("inputs").value.toString();
+          let leavedateE = document.getElementById("inpute").value.toString();
+          let leavereason = document.getElementById("reason").value.toString();
           console.log(leavedateS);
           console.log(leavedateE);
-          console.log(leavereason);
+          console.log(leavereason)
+          if(leavedateS === "YYYY-MM-DD" || leavedateE === "YYYY-MM-DD"){
+            alert("請完整填入日期！");
+            return ;
+          }
+          if(leavereason === ""){
+            alert("請填入請假類別！");
+            return ;
+          }
+          leavedateS = leavedateS.substr(0,4) + leavedateS.substr(5,2) + leavedateS.substr(8,2);
+          leavedateE = leavedateE.substr(0,4) + leavedateE.substr(5,2) + leavedateE.substr(8,2);
+          console.log(leavedateS);
+          console.log(leavedateE);
           try{
             const res = await fetch("/api/makeLeave",{
               method: "POST",
@@ -180,9 +191,10 @@
                         "leaveReason": leavereason
                       })
             });
-            const data = await response.json();
+            const data = await res.json();
             if(data)
               console.log(data); 
+              alert("成功送出！")
           }catch(err){
             console.log(err)
           }
@@ -310,7 +322,7 @@
               style="padding-top: 5px; padding-left: 0px; margin-right: 80px"
             >
               <select class="custom-select" id="reason">
-                <option selected>請選擇</option>
+                <option selected value="">請選擇</option>
                 <option value="personal">事假</option>
                 <option value="sick">病假</option>
                 <option value="official">公假</option>
@@ -367,7 +379,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script>
       $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',
+        format: 'yyyy.mm.dd',
       });
     </script>
   </body>

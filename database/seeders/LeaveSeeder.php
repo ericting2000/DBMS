@@ -42,7 +42,7 @@ class LeaveSeeder extends Seeder
                 "id" => "E0045",
                 "name" => "Osbert",
                 "leaveReason" => "official",
-                "dateStart" => "20210204",
+                "dateStart" => "20210202",
                 "dateEnd" => "20210203",
                 
             ],
@@ -54,13 +54,7 @@ class LeaveSeeder extends Seeder
                 "dateEnd" => "20190930",
                 
             ],
-            [
-                "id" => "E0021",
-                "name" => "Stephen",
-                "leaveReason" => "official",
-                "date" => "20190101",
-                
-            ],
+           
         ];
         \DB::table('leavesystem')->insert($data);
     }
