@@ -139,7 +139,7 @@
                 const response = await fetch("/api/getUserInfo", {
                   
                     method: "POST",
-                      headers:{ 'Content-Type': 'application/json'
+                    headers:{ 'Content-Type': 'application/json'
                         },
                     body:JSON.stringify({"userId":username ,
                         "userPassword": password})

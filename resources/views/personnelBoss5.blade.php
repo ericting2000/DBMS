@@ -107,6 +107,11 @@
   </style>
 
   <script>
+    let response = new Object;
+    let data = new Object;
+    function threshold(data, input){
+      return data.filter( data => data.leaveReason === input);
+    }
     function getCookie(cname) {
             var name = cname + "=";
             var decodedCookie = decodeURIComponent(document.cookie);
@@ -122,8 +127,78 @@
             }
           return "";
           }
-    let getdata = () => {
+    async function getdata() {
       document.getElementById("nametag").innerHTML = getCookie("name");
+      let username = getCookie("user");
+      try{
+        response = await fetch("/api/getLeaveRecord?userId="+username);
+        data = await response.json();
+        for(let i = 0; i < data.length; i++){
+          var row = "<div class='row'>"
+
+          row += "<div class='col-md-7' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;' >" + data[i].date.slice(0,4) + "." + data[i].date.slice(4,6) + "." + data[i].date.slice(6) + "</div>";
+          let reason = data[i].leaveReason;
+          if(reason === "sick")
+            reason = "病假";
+          if(reason === "personal")
+            reason = "事假";
+          if(reason === "official")
+            reason = "公假";
+          //記得檢查修改
+          if(reason === "bereavement")
+            reason = "喪假";
+          row += "<div class='col-md-5' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;'>" + reason + "</div>"
+          row += "</div>"
+          console.log(row);
+          document.getElementById("leaverecord").innerHTML += row;
+        }
+      }catch(err){
+        console.log(err)
+      }
+    }
+
+    function search(){
+      let input = document.getElementById("sinput").value;
+      if(input === ""){
+        document.getElementById("leaverecord").innerHTML ="";
+        getdata();
+        return;
+      }
+      let data_filter
+      console.log(input);
+      if(input === "事假" || input === "病假" || input === "公假" || input === "喪假"){
+        if(input === "事假")
+        input = "personal"
+        if(input === "病假")
+        input = "sick"
+        if(input === "公假")
+        input = "official"
+        if(input === "喪假")
+        input = "breavement"
+        data_filter = threshold(data, input);
+      }
+      
+      for(let i = 0; i < data_filter.length; i++){
+          if(i == 0)
+            document.getElementById("leaverecord").innerHTML ="";
+          //if()
+            var row = "<div class='row'>"
+
+            row += "<div class='col-md-7' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;' >" + data_filter[i].date.slice(0,4) + "." + data_filter[i].date.slice(4,6) + "." + data_filter[i].date.slice(6) + "</div>";
+            let reason = data_filter[i].leaveReason;
+            if(reason === "sick")
+              reason = "病假";
+            if(reason === "personal")
+              reason = "事假";
+            if(reason === "official")
+              reason = "公假";
+            //記得檢查修改
+            if(reason === "dead")
+              eason = "喪假";
+            row += "<div class='col-md-5' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;'>" + reason + "</div>"
+            row += "</div>"
+            document.getElementById("leaverecord").innerHTML += row;
+        }
     }
   </script>
 
@@ -198,10 +273,11 @@
             <input
               type="text"
               class="form-control"
-              placeholder="請假類別搜尋(事假、病假、喪假..)"
+              placeholder="請假類別搜尋(事假、病假、、公假、喪假)"
               aria-label="newpassword"
               aria-describedby="basic-addon1"
               style="width: 80%"
+              id="sinput"
             />
             <button
               type="button"
@@ -214,7 +290,7 @@
                 margin-left: 5px;
                 padding: 5px 35px;
               "
-              s
+              onclick="search()"
             >
               搜尋
             </button>
@@ -241,167 +317,8 @@
             >
               請假類別
             </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.04.28
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.04.25
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.31
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.26
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.15
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.10
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.08
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
-            <div
-              class="col-md-7"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              2021.03.01
-            </div>
-            <div
-              class="col-md-5"
-              style="
-                background-color: rgba(235, 235, 235, 0.63);
-                text-align: center;
-                padding: 5px 0;
-              "
-            >
-              病假
-            </div>
           </div>
+          <div id="leaverecord"></div>
         </div>
       </content>
     </box>
