@@ -4,7 +4,7 @@ namespace App\Http\Repositorys;
 use Illuminate\Support\Facades\DB;
 use App\Models\Employee;
 use App\Models\LeaveSystem;
-
+use \Datetime;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -44,6 +44,8 @@ class EmployeeRepository
         {
             
             $findName=Employee::where('id','=',$userId)->first();
+            $datetimeStart = Datetime::createFromFormat('Y-m-d', $leaveDateStart);
+            $datetimeEnd = Datetime::createFromFormat('Y-m-d', $leaveEnd);
             $name=$findName->name;
             //dd($name);
             $affected = DB::table('LeaveSystem')->insert(
@@ -69,6 +71,7 @@ class EmployeeRepository
             if(!$exist)
             {
                 //dd($name);
+                $datetime = Datetime::createFromFormat('Y-m-d', $time);
                 $affected = DB::table('Employee')->insert(
                                 array('id' => $userId,
                                     'name' => $name,
@@ -80,7 +83,7 @@ class EmployeeRepository
                                     'company' => $company,
                                     'email' => $email,
                                     'title' => $title,
-                                    'onBoardTime' => $time,
+                                    'onBoardTime' => $datetime,
                                     'address' => $address
                                     )
                                 );
