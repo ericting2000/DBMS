@@ -16,7 +16,7 @@
       crossorigin="anonymous"
     />
 
-    <title>Landing Page</title>
+    <title></title>
   </head>
 
   <style>
@@ -24,6 +24,11 @@
       text-decoration: none;
       color: black;
     }
+
+    a:hover {
+      text-decoration: none;
+    }
+
     header {
       height: 95px;
       background: #003865;
@@ -127,6 +132,7 @@
         }
 
         async function getdata() {
+            document.getElementById("nametag").innerHTML = getCookie("name");
             let username = getCookie("user");
             let password = getCookie("pswd") 
             try {
@@ -207,12 +213,12 @@
               人事資料管理系統
             </p>
           </div>
-          <div class="dropdown">
+          <div class="dropdown" >
             <a
               class="btn btn-secondary dropdown-toggle"
               href="#"
               role="button"
-              id="dropdownMenuLink"
+              id="nametag"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
@@ -254,6 +260,7 @@
             <a href="./Boss6">
               <li>個人請假系統</li>
             </a>
+            <a href="./Boss7"><li>系統異常報修</li></a>
           </ul>
         </div>
       </nav>

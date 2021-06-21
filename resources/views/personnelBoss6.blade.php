@@ -20,13 +20,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
     />
 
-    <title>Landing Page</title>
+    <title></title>
   </head>
 
   <style>
     a {
       text-decoration: none;
       color: black;
+    }
+
+    a:hover {
+      text-decoration: none;
     }
 
     header {
@@ -107,7 +111,28 @@
     }
   </style>
 
-  <body>
+  <script>
+    function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+          return "";
+          }
+    let loadname = () => {
+      document.getElementById("nametag").innerHTML = getCookie("name");
+    }
+  </script>
+
+  <body onload="loadname()">
     <header>
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -121,7 +146,7 @@
               class="btn btn-secondary dropdown-toggle"
               href="#"
               role="button"
-              id="dropdownMenuLink"
+              id="nametag"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
@@ -161,6 +186,7 @@
                 個人請假系統
               </li>
             </a>
+            <a href="./Boss7"><li>系統異常報修</li></a>
           </ul>
         </div>
       </nav>

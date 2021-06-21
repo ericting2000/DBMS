@@ -53,6 +53,22 @@ Route::get('/Boss6', function () {
     return view('/personnelBoss6');
 });
 
+Route::get('/Boss7', function () {
+    return view('/personnelBoss7');
+});
+
+Route::get('/SystemLanding', function () {
+    return view('/systemLanding');
+});
+
+Route::get('/System1', function () {
+    return view('/system1');
+});
+
+Route::get('/System2', function () {
+    return view('/system2');
+});
+
 Route::get('/Logo', function () {
     return view('/Logo');
 });
