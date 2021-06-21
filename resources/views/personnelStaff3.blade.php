@@ -125,13 +125,71 @@
               }
             }
           return "";
+        }
+
+        async function getdata() {
+            document.getElementById("nametag").innerHTML = getCookie("name");
+            let username = getCookie("user");
+            let password = getCookie("pswd"); 
+            try {
+                const response = await fetch("/api/getUserInfo", {
+                  
+                    method: "POST",
+                    headers:{ 'Content-Type': 'application/json'
+                        },
+                    body:JSON.stringify({"userId":username ,
+                        "userPassword": password})
+                        
+                });
+                const data = await response.json();
+                if(data)
+                  console.log(data);
+                document.getElementById("name").innerHTML=data.name;
+                document.getElementById("ID").innerHTML=data.id;
+                if(data.gender === "male"){
+                  document.getElementById("gender").innerHTML="男";
+                }else{
+                  document.getElementById("gender").innerHTML="女";
+                }
+                let B = data.birth.slice(0,4) + "." + data.birth.slice(4,6) + "." + data.birth.slice(6)
+                document.getElementById("birth").innerHTML=B;
+                document.getElementById("title").innerHTML=data.title;
+            }catch (err) {
+                console.log(err);
+            }
+
+        }
+        async function makeleave(){
+          document.getElementById("nametag").innerHTML = getCookie("name");
+          let username = getCookie("user");
+          let leavedateS = document.getElementById("inputs").value;
+          let leavedateE = document.getElementById("inpute").value;
+          let leavereason = document.getElementById("reason").value;
+          console.log(username);
+          console.log(leavedateS);
+          console.log(leavedateE);
+          console.log(leavereason);
+          try{
+            const res = await fetch("/api/makeLeave",{
+              method: "POST",
+              headers:{ 'Content-Type': 'application/json'
+                        },
+              body:JSON.stringify({"userId":username ,
+                        "leaveDateStart": leavedateS,
+                        "leaveDateEnd": leavedateE,
+                        "leaveReason": leavereason
+                      })
+            });
+            const data = await response.json();
+            if(data)
+              console.log(data); 
+          }catch(err){
+            console.log(err)
           }
-    let loadname = () => {
-      document.getElementById("nametag").innerHTML = getCookie("name");
-    }
+        }
   </script>
 
-  <body onload="loadname()">
+  <body onload="getdata()">
     <header>
       <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -193,26 +251,24 @@
             <div
               class="col-md-12"
               style="font-size: 32px; padding-bottom: 20px"
+              id="name"
             >
-              姓名
+              
             </div>
           </div>
           <div class="row">
             <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">ID</div>
             <div class="col-md-3" style="color: rgba(0, 0, 0, 0.5)">職稱</div>
-            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px">
-              XXXXXXXX
+            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px" id="ID">
+              
             </div>
-            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px">
-              XXXXXXXX
+            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px" id="title">
             </div>
             <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">性別</div>
             <div class="col-md-3" style="color: rgba(0, 0, 0, 0.5)">生日</div>
-            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px">
-              男
+            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px" id="gender">
             </div>
-            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px">
-              XXXXXXXX
+            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px" id="birth">
             </div>
             <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">
               請假日期
@@ -226,8 +282,9 @@
                   type="text"
                   name="date"
                   class="form-control datepicker"
-                  value="YYYY.MM.DD"
+                  value="YYYY-MM-DD"
                   style="text-align: center"
+                  id="inputs"
                 />
                 <span class="glyphicon glyphicon-calendar"></span>
               </div>
@@ -241,8 +298,9 @@
                   type="text"
                   name="date"
                   class="form-control datepicker"
-                  value="YYYY.MM.DD"
+                  value="YYYY-MM-DD"
                   style="text-align: center"
+                  id="inpute"
                 />
                 <span class="glyphicon glyphicon-calendar"></span>
               </div>
@@ -251,12 +309,12 @@
               class="col offset-5"
               style="padding-top: 5px; padding-left: 0px; margin-right: 80px"
             >
-              <select class="custom-select">
+              <select class="custom-select" id="reason">
                 <option selected>請選擇</option>
-                <option value="">事假</option>
-                <option value="">病假</option>
-                <option value="">公假</option>
-                <option value="">產假</option>
+                <option value="personal">事假</option>
+                <option value="sick">病假</option>
+                <option value="official">公假</option>
+                <option value="breavement">喪假</option>
               </select>
             </div>
             <div class="col offset-9" style="padding-top: 30px">
@@ -274,7 +332,7 @@
                 "
                 data-toggle="modal"
                 data-target="#passwordchange"
-                onclick="alertsend()"
+                onclick="makeleave()"
               >
                 確認送出
               </button>
@@ -309,7 +367,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script>
       $('.datepicker').datepicker({
-        format: 'yyyy.mm.dd',
+        format: 'yyyy-mm-dd',
       });
     </script>
   </body>
