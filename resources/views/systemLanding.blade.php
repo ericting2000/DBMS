@@ -107,26 +107,16 @@
                     class="btn btn-default btn-lg"
                     id="a"
                     data-toggle="modal"
-                    data-target="#stock"
+                    data-target="#customer"
                 >
-                    股東資料管理系統
-                </button>
-                <button
-                    style="color: white"
-                    type="button"
-                    class="btn btn-default btn-lg"
-                    id="b"
-                    data-toggle="modal"
-                    data-target="#personnel"
-                >
-                    人事資料管理系統
+                    顧客管理系統
                 </button>
             </div>
         </div>
 
         <div
             class="modal fade"
-            id="personnel"
+            id="customer"
             tabindex="-1"
             role="dialog"
             aria-labelledby="exampleModalCenterTitle"
@@ -140,7 +130,7 @@
                             id="exampleModalCenterTitle"
                             style="color: white; font-weight: 400"
                         >
-                            歡迎進入人事資訊系統
+                            
                         </h5>
                         <button
                             type="button"
@@ -210,90 +200,7 @@
             </div>
         </div>
 
-        <div
-            class="modal fade"
-            id="stock"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true"
-        >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5
-                            class="modal-title"
-                            id="exampleModalCenterTitle"
-                            style="color: white; font-weight: 400"
-                        >
-                            歡迎進入股東資訊系統
-                        </h5>
-                        <button
-                            type="button"
-                            class="close"
-                            data-dismiss="modal"
-                            aria-label="Close"
-                            style="color: white; font-size: 30px"
-                        >
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"
-                                    ><img
-                                        src="{{ asset('user.svg') }}"
-                                        alt=""
-                                        style="width: 20px; height: 20px"
-                                /></span>
-                            </div>
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder="請輸入帳號(ID)"
-                                id="Username"
-                                aria-label="Username"
-                                aria-describedby="basic-addon1"
-                            />
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1"
-                                    ><img
-                                        src="{{ asset('password.svg') }}"
-                                        alt=""
-                                        style="width: 20px; height: 20px"
-                                /></span>
-                            </div>
-                            <input
-                                type="password"
-                                class="form-control"
-                                placeholder="請輸入密碼"
-                                id="Password"
-                                aria-label="Password"
-                                aria-describedby="basic-addon1"
-                            />
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-primary"
-                            style="
-                                background-color: #003865;
-                                border-style: none;
-                            "
-                            onclick="login()"
-                        >
-                            登入
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script
@@ -313,22 +220,11 @@
         ></script>
         <script>
           $(document).ready(function() {
-            $("#personnel").on("hidden.bs.modal", function () {
+            $("#customer").on("hidden.bs.modal", function () {
              $(".modal-body input").val("");
             });
           });
       
          </script>
-         <script>
-            $(document).ready(function() {
-            $("#stock").on("hidden.bs.modal", function () {
-             $(".modal-body input").val("");
-            });
-          });
-          
-      
-         </script>
-        
-        
     </body>
 </html>

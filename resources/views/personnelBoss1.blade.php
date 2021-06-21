@@ -16,13 +16,17 @@
       crossorigin="anonymous"
     />
 
-    <title>Landing Page</title>
+    <title></title>
   </head>
 
   <style>
     a {
       text-decoration: none;
       color: black;
+    }
+
+    a:hover {
+      text-decoration: none;
     }
 
     header {
@@ -132,8 +136,26 @@
     }
   </style>
   <script>
+    function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i <ca.length; i++) {
+              var c = ca[i];
+              while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+              }
+              if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+              }
+            }
+          return "";
+          }
+    let getdata = () => {
+      document.getElementById("nametag").innerHTML = getCookie("name");
+    }
           
-    </script>
+  </script>
 
   <body onload="getdata()">
     <header>
@@ -149,7 +171,7 @@
               class="btn btn-secondary dropdown-toggle"
               href="#"
               role="button"
-              id="dropdownMenuLink"
+              id="nametag"
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
@@ -191,6 +213,7 @@
             <a href="./Boss6">
               <li>個人請假系統</li>
             </a>
+            <a href="./Boss7"><li>系統異常報修</li></a>
           </ul>
         </div>
       </nav>
@@ -455,7 +478,7 @@
               >
                 張曉華
               </div>
-              <div class="col-md-5">員工</div>
+              <div class="col-md-5" style="font-size: 14pt; padding-bottom: 15px">員工</div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">ID</div>
               <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">生日</div>
               <div
