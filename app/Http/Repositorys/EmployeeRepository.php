@@ -23,7 +23,10 @@ class EmployeeRepository
 
         $boss=Employee::where('id','=',$userId)->where('password','=',$userPassword)
                           ->where('title','=','CEO')
-                          ->orWhere('title','HR')->first();
+                          ->orWhere(function($query) {
+                            $query->where('title', 'HR')
+                                  ->where('title', 'MANAGER');
+                            })->first();
         if($boss)
         {
             $allEmployee=DB::table('Employee')->get();
