@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<style>
+
+.myDiv 
+{
+  position:absolute;
+  background-color:#003865;
+  height:95px;
+  width:100%;
+  filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.25));
+  top:0px;
+  left:0px;
+}
+
+.sidenav
+{
+  position:absolute;
+  width:267px;
+  height:929px;
+  left:0px;
+  top:251px;
+}
+
+.myDiv2 
+{
+  position:absolute;
+  width:122px;
+  height:122px;
+  left:68px;
+  top:113px;
+  background: #C4C4C4;
+  border-radius: 50%;
+}
+
+.myDiv3
+{
+  position: absolute;
+  width: 1096px;
+  height: 510px;
+  left: 301px;
+  top: 270px;
+    box-shadow: 5px 5px 10px 4px #c4c4c4;
+}
+
+.myDiv4 
+{
+  width:133px;
+  height:133px;
+  position:relative;
+  left:57px;
+  top:35px;
+  background: #C4C4C4;
+  border-radius: 50%;
+}
+
+.sidenav a
+{
+  padding: 14px 10px 14px 59px;
+  text-decoration: none;
+  font-size: 25px;
+  color: black;
+  display: block;
+}
+
+
+.sidenav a:hover 
+{
+  color: #ffffff;
+  background-color:rgba(108, 159, 200, 0.77);
+}
+
+.button2
+{
+  border: none;
+  width: 118px;
+  height: 34px;
+  background: #6C9FC8;
+  border-radius: 8px;
+  font-size:22px;
+  color:#ffffff;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+
+.button3
+{
+  position: absolute;
+  left: 1316px;
+  top: 36px;
+  border: none;
+  background: #003865;
+  border-radius: 8px;
+  font-size:24px;
+  color:#ffffff;
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+
+.modal 
+{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background: rgba(38, 38, 38, 0.35);
+  backdrop-filter: blur(17px);
+}
+
+/* Modal Content */
+.modal-content 
+{
+  position: center;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  height:327px;
+  width: 730px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  border-radius:16px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+/* The Close Button */
+.close 
+{
+  position:relative;
+  left:-20px;
+  top:5px;
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus 
+{
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-header 
+{
+  position:relative;
+  left:0px;
+  top:-20px;
+  width:730px;
+  height:50px;
+  background-color: #003865;
+  border-radius: 16px 16px 0px 0px;
+  color: white;
+}
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer 
+{
+  background-color: #ffffff;
+  border-radius: 0px 0px 16px 16px;
+  color: white;
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="myDiv">
+  <p style="position:absolute; margin-left:54px; margin-top:31px; 
+  margin-height:33px; 
+  font-size:30px; color:#ffffff; line-height:35px; 
+  font-family:Roboto">股東資料管理系統</p>
+  <button class="button3">王小明</button>
+</div>
+
+<div class="myDiv2">
+  <p><br></p>
+  </div>
+
+<div class="sidenav">
+  <a href="./stock_ceo_data.html">股東資料總覽</a>
+  <a href="./stock_ceo_edit.html">股東資料編輯</a>
+  <a href="./stock_ceo_transaction_data.html">交易紀錄總覽</a>
+  <a href="./stock_ceo_person_data.html">個人資料總覽</a>
+  <a href="./stock_ceo_person_stock_data.html">個人股票總覽</a>
+  <a href="./stock_ceo_person_transaction_data.html">個人交易紀錄</a>
+  <a href="./stock_ceo_transaction.html">股票交易系統</a>
+  <a href="#">系統異常報修</a>
+</div>
+
+
+<div class="main">
+  <p style="position: relative; left: 307px;
+  top: 150.5px; font-size:40px; font-family:Roboto; font-weight:1000;">股票交易系統</p>
+    <div class="myDiv3">
+    <p style="position: relative; left: 49px; top: 78px; font-family: Roboto;
+  font-style: normal; font-weight: normal; font-size: 18px; line-height: 21px;
+  color: rgba(0, 0, 0, 0.5);">股東ID</p>
+    <p style="position: relative; left: 49px; top: 60px; font-family: Roboto;
+  font-style: normal; font-weight: normal; font-size: 22px; line-height: 26px;
+  color: #000000;">XXXXXX</p>
+    <p style="position: relative; left: 49px; top: 70px; font-family: Roboto;
+  font-style: normal; font-weight: normal; font-size: 18px; line-height: 21px;
+  color: rgba(0, 0, 0, 0.5);">交易類別</p>
+    <select style="position: relative; width: 109px; height: 31px; left: 49px;
+  top: 60px; background: #FFFFFF; border: 1px solid #A5A5A5;font-size:22px;
+    font-weight:700px; box-sizing: border-box; border-radius: 6px;">
+    <option value="買">買</option>
+    <option value="賣">賣</option>
+    </select>
+    <p style="position: relative; left: 49px; top: 70px; font-family: Roboto;
+  font-style: normal; font-weight: normal; font-size: 18px; line-height: 21px;
+  color: rgba(0, 0, 0, 0.5);">交易股數(股)</p>
+    <input type="number" id="lot" name="lot" style="position: relative;
+    left: 49px; top: 60px; width: 127px; height: 31px; background: #FFFFFF;
+  border: 1px solid #A5A5A5; box-sizing: border-box; border-radius: 6px;
+    font-size: 18px; line-height: 21px;">
+    <p style="position: relative; left: 747px; top: -99px; font-family: Roboto;
+  font-style: normal; font-weight: normal; font-size: 18px; line-height: 21px;
+  color: rgba(0, 0, 0, 0.5);">交易張數(張)</p>
+    <input type="number" id="lot" name="lot" style="position: relative;
+    left: 747px; top: -108px; width: 127px; height: 31px; background: #FFFFFF;
+  border: 1px solid #A5A5A5; box-sizing: border-box; border-radius: 6px;
+    font-size: 18px; line-height: 21px;">
+    <p style="position: relative; left: 747px; top: -99px; font-family: Roboto;
+  font-style: normal; font-weight: normal; font-size: 18px; line-height: 21px;
+  color: rgba(0, 0, 0, 0.5);">交易總額</p>
+    <p style="position: relative; left: 747px; top: -110px; font-family: Roboto;
+  font-style: normal; font-weight: normal; font-size: 22px; line-height: 26px;
+  color: #000000;">XXXXXX</p>
+    <button class="button2" id="deal" style="position: relative; left: 747px; top: -60px;">   交易</button>
+  </div>
+  <div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <p style="position:relative; top:12px;left:24px; font-size:20px;     font-family:Roboto;">股票交易</p>
+    </div>
+    <div class="modal-body">
+      <p style="font-family:Roboto; font-size:18px; color: 
+      rgba(0, 0, 0, 0.5); position:relative; top:-25px;left:10px;">
+      交易編號</p>
+      <p style="font-family:Roboto; font-size:18px; color: 
+      #000000; position:relative; top:-35px;left:12px;">TXXXX</p>
+      <p style="font-family:Roboto; font-size:18px; color: 
+      rgba(0, 0, 0, 0.5); position:relative; left:10px; top:-25px;">  交易時間</p>
+      <p style="font-family:Roboto; font-size:18px; color: 
+      #000000; position:relative; top:-35px;left:12px;">23:59</p>
+     <p style="font-family:Roboto; font-size:18px; color: 
+      rgba(0, 0, 0, 0.5); position:relative; left:10px; top:-25px;">  交易金額(元)</p> 
+      <p style="font-family:Roboto; font-size:18px; color: 
+      #000000; position:relative; top:-35px;left:12px;">10000</p>
+      
+       <p style="font-family:Roboto; font-size:18px; color: 
+      rgba(0, 0, 0, 0.5); position:relative; left:500px;          top:-265px;"> 交易日期</p> 
+      
+      <p style="font-family:Roboto; font-size:18px; color: 
+      #000000; position:relative; top:-277px;left:502px;">20200618</p>
+      
+       <p style="font-family:Roboto; font-size:18px; color: 
+      rgba(0, 0, 0, 0.5); position:relative; left:500px;          top:-266px;"> 交易類別</p> 
+      
+      <p style="font-family:Roboto; font-size:18px; color: 
+      #000000; position:relative; top:-277px;left:502px;">買進</p>
+      
+      <button class="button2" id="confirm" style="position: relative;       left: 500px; top: -257px;">確認交易</button>
+      
+     </div>
+    <div class="modal-footer">
+    </div>
+</div></div>
+ 
+</div>
+
+<script>
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("deal"); 
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+var span2 = document.getElementById("confirm"); 
+btn.onclick = function() 
+{
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() 
+{
+  modal.style.display = "none";
+}
+span2.onclick = function() 
+{
+  modal.style.display = "none";
+}
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) 
+{
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+</body>
+</html>
