@@ -125,9 +125,9 @@ class EmployeeRepository
             if($exist)
             {
                 //dd($name);
-                $affected = DB::table('Employee')->where('id',$userId)->update(
+                $affected = DB::table('Employee')->where('id',$userId)
+                                ->where('password',$userPassword)->update(
                                 array('name' => $name,
-                                    'password' => $userPassword,
                                     'birth' => $birth,
                                     'cellPhone' => $cell,
                                     'localPhone' => $local,

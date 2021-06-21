@@ -52,7 +52,9 @@ Route::post('/getStockHolderInfo','App\Http\Controllers\StockHolderController@ge
 Route::get('/getIndividualTransInfo','App\Http\Controllers\StockHolderController@getTransInfo');
 
 //交易股票
-//Route::post('/makeTransaction','App\Http\Controllers\StockHolderController@makeTransaction');
+Route::post('/makeTransaction','App\Http\Controllers\StockHolderController@makeTransaction');
 
+//股東資料總覽(編輯)
+Route::post('/modifyStockHolder','App\Http\Controllers\StockHolderController@modifyStockHolder');
 
 
