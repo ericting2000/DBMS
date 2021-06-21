@@ -136,12 +136,12 @@
         async function getdata() {
             document.getElementById("nametag").innerHTML = getCookie("name");
             let username = getCookie("user");
-            let password = getCookie("pswd") 
+            let password = getCookie("pswd"); 
             try {
                 const response = await fetch("/api/getUserInfo", {
                   
                     method: "POST",
-                      headers:{ 'Content-Type': 'application/json'
+                    headers:{ 'Content-Type': 'application/json'
                         },
                     body:JSON.stringify({"userId":username ,
                         "userPassword": password})
