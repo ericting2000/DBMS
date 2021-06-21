@@ -82,32 +82,67 @@ class StockholderRepository
         }
         else return false;
     }
-    /*
-    public function makeTransaction($userId, $share, $lot, $type, $amount, $dateTime)
+    
+    public function makeTransaction($userId, $share, $lot, $type, $dateTime)
     {
         $find=Stockholder::where('id','=',$userId)->first();
         if($find)
         {
             if($type=='sell')
             {
-                //$affected = DB::table('Stockholder')->where('id', '=', $userId)->update(array('password' => $newPassword));
-                if($affected) return true;
+                $oldLot=$find->lot;
+                $oldShare=$find->share;
+                $newLot = DB::table('Stockholder')->where('id', '=', $userId)->update(array('lot' => $oldLot-$lot));
+                $newShare = DB::table('Stockholder')->where('id', '=', $userId)->update(array('share' => $oldShare-$share));
+                if($newLot && $newShare) return true;
                 else return false;
             }
             else if($type=='buy')
             {
-                if($share>0)
-                {
-
-                }
-                $affected = DB::table('Stockholder')->where('id', '=', $userId)->update(array('password' => $newPassword));
-                if($affected) return true;
+                $oldLot=$find->lot;
+                $oldShare=$find->share;
+                $newLot = DB::table('Stockholder')->where('id', '=', $userId)->update(array('lot' => $lot+$oldLot));
+                $newShare = DB::table('Stockholder')->where('id', '=', $userId)->update(array('share' => $share+$oldShare));
+                if($newLot && $newShare) return true;
                 else return false;
             }
             else return false;
             
         }
         else return false;
-    }*/
+    }
+    public function modifyStockHolder($userId, $name, $userPassword, $birth, $cell,
+                                                    $title, $address)
+    {
+        { 
+            //dd($userId, $name, $userPassword, $birth, $cell, $local, $gender, $company, $email, $title, $time, $address);
+    
+            if($userId[0]=='S')
+            {
+                $exist=StockHolder::where('id','=',$userId)->first();
+                if($exist)
+                {
+                    //dd($name);
+                    $affected = DB::table('StockHolder')->where('id',$userId)
+                                    ->where('password',$userPassword)->update(
+                                    array('name' => $name,
+                                        'birth' => $birth,
+                                        'phoneNumber' => $cell,
+                                        'title' => $title,
+                                        'address' => $address
+                                        )
+                                    );
+                    if($affected) return true;
+                    else return false;
+                }
+                else
+                {
+                    $error='Id not existed';
+                    return $error;
+                }
+            }
+            else return false;
+        }
+    }
 }
 

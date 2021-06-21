@@ -38,7 +38,14 @@ class EmployeeService
     public function deleteEmployee($userId)   
     {
         return $this->EmployeeRepository->deleteEmployee($userId);
-    }              
+    }            
+    
+    public function modifyEmployee($userId, $name, $userPassword, $birth, $cell,
+                                                    $local, $gender, $email, $title, $address)
+    {
+        return $this->EmployeeRepository->modifyEmployee($userId, $name, $userPassword, $birth, $cell,
+                                                    $local, $gender, $email, $title, $address);
+    }
 /*
     public function getIndividualData($userId, $userPassword)
     {
