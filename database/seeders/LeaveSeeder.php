@@ -18,35 +18,40 @@ class LeaveSeeder extends Seeder
                 "id" => "E0001",
                 "name" => "Sabrina",
                 "leaveReason" => "personal",
-                "date" => "20191217",
+                "dateStart" => "20191217",
+                "dateEnd" => "20191218",
                 
             ],
             [
                 "id" => "E0001",
                 "name" => "Sabrina",
                 "leaveReason" => "official",
-                "date" => "20201231",
+                "dateStart" => "20201231",
+                "dateEnd" => "20201231",
                 
             ],
             [
                 "id" => "E0045",
                 "name" => "Osbert",
                 "leaveReason" => "official",
-                "date" => "20210203",
+                "dateStart" => "20210203",
+                "dateEnd" => "20210203",
                 
             ],
             [
                 "id" => "E0045",
                 "name" => "Osbert",
                 "leaveReason" => "official",
-                "date" => "20210204",
+                "dateStart" => "20210204",
+                "dateEnd" => "20210203",
                 
             ],
             [
                 "id" => "E0021",
                 "name" => "Stephen",
                 "leaveReason" => "sick",
-                "date" => "20190930",
+                "dateStart" => "20190930",
+                "dateEnd" => "20190930",
                 
             ],
         ];

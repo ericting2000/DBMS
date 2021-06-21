@@ -15,11 +15,30 @@ class EmployeeService
         return $this->EmployeeRepository->getLeaveData($userId);
     }
 
+    public function getAllLeaveData($userId, $userPassword)
+    {
+        return $this->EmployeeRepository->getAllLeaveData($userId, $userPassword);
+    }
+
     public function getEmployeeInfo($userId, $userPassword)
     {
         return $this->EmployeeRepository->getEmployeeInfo($userId, $userPassword);
     }
-    
+
+    public function makeLeave($userId, $leaveDateStart, $leaveEnd, $leaveReason)
+    {
+        return $this->EmployeeRepository->makeLeave($userId, $leaveDateStart, $leaveEnd, $leaveReason);
+    }
+    public function insertEmployee($userId, $name, $userPassword, $birth, $cell,
+                                                    $local, $gender, $company, $email, $title, $time, $address)
+    {
+        return $this->EmployeeRepository->insertEmployee($userId, $name, $userPassword, $birth, $cell,
+                                                    $local, $gender, $company, $email, $title, $time, $address);
+    }
+    public function deleteEmployee($userId)   
+    {
+        return $this->EmployeeRepository->deleteEmployee($userId);
+    }              
 /*
     public function getIndividualData($userId, $userPassword)
     {
