@@ -176,8 +176,8 @@
             alert("請填入請假類別！");
             return ;
           }
-          leavedateS = leavedateS.substr(0,4) + leavedateS.substr(5,2) + leavedateS.substr(8,2);
-          leavedateE = leavedateE.substr(0,4) + leavedateE.substr(5,2) + leavedateE.substr(8,2);
+          //leavedateS = leavedateS.substr(0,4) + leavedateS.substr(5,2) + leavedateS.substr(8,2);
+          //leavedateE = leavedateE.substr(0,4) + leavedateE.substr(5,2) + leavedateE.substr(8,2);
           console.log(leavedateS);
           console.log(leavedateE);
           try{
@@ -379,7 +379,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
     <script>
       $('.datepicker').datepicker({
-        format: 'yyyy.mm.dd',
+        format: 'yyyy-mm-dd',
       });
     </script>
   </body>

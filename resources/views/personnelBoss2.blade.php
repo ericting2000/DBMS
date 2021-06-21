@@ -151,113 +151,15 @@
     let response = new Object;
     let data = new Object;
     async function add(){
-      let password =document.getElementById("passwordn").value.toString();
-      let name = document.getElementById("namen").value.toString();
-      let id = document.getElementById("IDn").value.toString();
-      let birth = $("#birthn").datepicker().val()
-      let cell = document.getElementById("celln").value.toString();
-      let address = document.getElementById("addressn").value.toString();
-      let gender = document.getElementById("gendern").value.toString();
-      let local = document.getElementById("localn").value.toString();
-      let title = document.getElementById("titlen").value.toString();
-      let email = document.getElementById("mailn").value.toString();
-      let company = document.getElementById("company").value.toString();
-      let onboard = $("#onboardn").datepicker().val()
-      //onboard = onboard.substr(0,4) + onboard.substr(5,2) + onboard.substr(8,2);
-      //birth = birth.substr(0,4) + birth.substr(5,2) + birth.substr(8,2);
-      console.log(password);
-      console.log(name);
-      console.log(id);
-      console.log(birth);
-      console.log(cell);
-      console.log(address);
-      console.log(gender);
-      console.log(local);
-      console.log(title);
-      console.log(email);
-      console.log(company);
-      console.log(onboard)
-      try{
-        response = await fetch("/api/addNewEmployee",{
-          method: "POST",
-          headers:{ 'Content-Type': 'application/json'
-                  },
-          body:JSON.stringify({
-                        "userPassword": password,
-                    "userName":name ,
-                    "userId":id ,
-                    "userBirth":birth ,
-                  "userCellPhone":cell ,
-                  "userAddress":address ,
-                  "userGender":gender ,
-                  "userLocalPhone":local ,
-                  "userTitle":title ,
-                  "userEmail":email ,
-                  "company":company ,
-                  "onBoardTime":onboard})
 
-        });
-        data = await response.json();
-        console.log(data);
-      }catch(err){
-        console.log(err)
-      }
 
     }
     async function save(){
-       let password =document.getElementById("password").value.toString();
-      let name = document.getElementById("name").value.toString();
-      let id = document.getElementById("ID").value.toString();
-      let birth = $("#birth").datepicker().val()
-      let cell = document.getElementById("cell").value.toString();
-      let address = document.getElementById("address").value.toString();
-      let gender = document.getElementById("gender").value.toString();
-      let local = document.getElementById("local").value.toString();
-      let title = document.getElementById("title").value.toString();
-      let email = document.getElementById("mail").value.toString();
-      //onboard = onboard.substr(0,4) + onboard.substr(5,2) + onboard.substr(8,2);
-      //birth = birth.substr(0,4) + birth.substr(5,2) + birth.substr(8,2);
-      console.log(password);
-      console.log(name);
-      console.log(id);
-      console.log(birth);
-      console.log(cell);
-      console.log(address);
-      console.log(gender);
-      console.log(local);
-      console.log(title);
-      console.log(email);
-      console.log(company);
-      console.log(onboard)
-      try{
-        response = await fetch("/api/modifyEmployee",{
-          method: "POST",
-          headers:{ 'Content-Type': 'application/json'
-                  },
-          body:JSON.stringify({
-                        "userPassword": password,
-                    "userName":name ,
-                    "userId":id ,
-                    "userBirth":birth ,
-                  "userCellPhone":cell ,
-                  "userAddress":address ,
-                  "userGender":gender ,
-                  "userLocalPhone":local ,
-                  "userTitle":title ,
-                  "userEmail":email ,
-                  })
-
-        });
-        data = await response.json();
-        console.log(data);
-        getdata();
-      }catch(err){
-        console.log(err)
-      }
+      
     }
     function wipe(){
       let id = document.getElementById("id")
-      console.log()
+      console.log(id)
     }
     function sdata(data_filter){
       for(let i = 0; i < data_filter.length; i++){
@@ -394,10 +296,10 @@
       
     }
     function modaldetail(i){
-
-      document.getElementById("name").value=data[i].name;
+      
+        document.getElementById("name").value=data[i].name;
       document.getElementById("ID").value=data[i].id;
-      document.getElementById("password").value=data[i].password;
+      //document.getElementById("password").value=data[i].password;
       let B = data[i].birth.slice(0,4) + "." + data[i].birth.slice(4,6) + "." + data[i].birth.slice(6)
       document.getElementById("birth").value=B;
       document.getElementById("title").value=data[i].title;
@@ -409,8 +311,41 @@
       document.getElementById("cell").value=C;
       document.getElementById("mail").value=data[i].email;
       console.log("modaldeail_activate")
+      
     }
+    async function Modpassword() {
+            let username = getCookie("user");
+            let oldpassword = document.getElementById("oldpassword").value;
+            let newpassword = document.getElementById("newpassword").value;
+            let confirmnewpassword = document.getElementById("confirmnewpassword").value;
+            console.log("舊密碼：" + oldpassword,typeof(oldpassword));
+            console.log("新密碼：" + newpassword,typeof(newpassword));
+            console.log("確認新密碼：" + confirmnewpassword,typeof(confirmnewpassword));
 
+            if(newpassword.toString() !== confirmnewpassword.toString()){
+              alert("新密碼與確認密碼不符，請重新輸入！")
+              return;
+            }
+            try {
+                const response = await fetch("/api/modifyPassword", {
+                  
+                    method: "POST",
+                      headers:{ 'Content-Type': 'application/json'
+                        },
+                    body:JSON.stringify({"userId":username ,
+                        "userPassword": oldpassword,
+                      "newPassword": newpassword})
+                        
+                });
+                const data = await response.json();
+                console.log(data);
+                alert("修改成功！");
+                $('#passwordchange').modal('hide');
+            } catch (err) {
+                console.log(err);
+            }
+            
+        }
     
   </script>
 
@@ -643,13 +578,23 @@
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
               >
-                <input
-                  type="text"
-                  class="form-control"
-                  value=""
-                  style="width: 100%"
-                  id="password"
-                />
+                <button
+                type="button"
+                class="btn btn-primary"
+                style="
+                  background-color: #6c9fc8;
+                  border-style: none;
+                  color: white;
+                  font-size: 14pt;
+                  padding-bottom: 0;
+                  padding-top: 0;
+                  margin-bottom: 15px;
+                "
+                data-toggle="modal"
+                data-target="#passwordchange"
+              >
+                修改密碼
+              </button>
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">性別</div>
               <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">生日</div>
@@ -757,7 +702,7 @@
                 border-style: none;
                 padding: 6px 20px;
               "
-              onclick="wipe()"
+              onclick=""
             >
               刪除
             </button>
@@ -779,6 +724,87 @@
       </div>
     </div>
 
+    <!--changepassword-->
+    <div
+      class="modal fade"
+      id="passwordchange"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="exampleModalCenterTitle"
+              style="color: white; font-weight: 400"
+            >
+              修改個人密碼
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="color: white; font-size: 30px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="請輸入舊密碼"
+                aria-label="oldpassword"
+                aria-describedby="basic-addon1"
+                id="oldpassword"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="請輸入新密碼"
+                aria-label="newpassword"
+                aria-describedby="basic-addon1"
+                id="newpassword"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="請再次輸入新密碼"
+                aria-label="newpassword"
+                aria-describedby="basic-addon1"
+                id="confirmnewpassword"
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              style="
+                background-color: #003865;
+                border-style: none;
+                border-radius: 10px;
+              "
+              onclick="Modpassword()"
+            >
+              確認修改
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!--Modal newperson-->
     <div
       class="modal fade bd-example-modal-lg"
@@ -1016,14 +1042,7 @@
     <!---date picker-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-    <script>
-          $(document).ready(function() {
-            $("#newperson").on("hidden.bs.modal", function () {
-             $(".modal-body input").val("");
-            });
-          });
-      
-    </script>
+    
     <script>
       $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
