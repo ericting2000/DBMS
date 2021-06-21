@@ -14,7 +14,6 @@ class Share extends Migration
     public function up()
     {
         Schema::create('share', function (Blueprint $table) {
-            $table->string('type');
             $table->integer('share')->nullable();
             $table->string('serialNumber');
             $table->primary('serialNumber');

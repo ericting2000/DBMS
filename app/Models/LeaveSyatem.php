@@ -16,6 +16,6 @@ class LeaveSystem extends Model
     protected $keyType = 'string';
     public function employee()
     {
-        return this->belongsTo('App\Models\Employee','serialNumber');
+        //return this->belongsTo('App\Models\Employee','id');
     }
 }
