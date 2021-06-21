@@ -17,8 +17,9 @@ class LeaveSystem extends Migration
             $table->char('id', 5);
             $table->string('name');
             $table->string('leaveReason');
-            $table->timestamp('date');
-            $table->primary(['id', 'date']);
+            $table->timestamp('dateStart');
+            $table->timestamp('dateEnd');
+            $table->primary(['id', 'dateStart', 'dateEnd']);
             $table->foreign('id')->references('id')->on('employee');
 
         });

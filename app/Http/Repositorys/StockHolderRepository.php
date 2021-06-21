@@ -31,7 +31,7 @@ class StockholderRepository
     public function getStockHolderData($userId, $userPassword)
     {
 
-        $boss=Stockholder::where('id','=',$userId)->where('password','=',$userPassword)->where('title','=','BOSS')->first();
+        $boss=Stockholder::where('id','=',$userId)->where('password','=',$userPassword)->first();
         if($boss)
         {
             $allStockHolder=DB::table('Stockholder')->get();

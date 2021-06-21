@@ -21,9 +21,7 @@ class EmployeeRepository
     public function getEmployeeInfo($userId, $userPassword)
     {
 
-        $boss=Employee::where('id','=',$userId)->where('password','=',$userPassword)
-                          ->where('title','=','CEO')
-                          ->orWhere('title','HR')->first();
+        $boss=Employee::where('id','=',$userId)->where('password','=',$userPassword)->first();
         if($boss)
         {
             $allEmployee=DB::table('Employee')->get();
@@ -31,7 +29,83 @@ class EmployeeRepository
         }
         else return false;
     }
-    
+
+    public function getAllLeaveData($userId, $userPassword)
+    {
+        $boss=Employee::where('id','=',$userId)->where('password','=',$userPassword)->first();
+        $leaveData=DB::table('LeaveSystem')->get();
+        if($leaveData) return $leaveData;
+        else return false;
+    }
+
+    public function makeLeave($userId, $leaveDateStart, $leaveEnd, $leaveReason)
+    {
+        if($userId[0]=='E')
+        {
+            
+            $findName=Employee::where('id','=',$userId)->first();
+            $name=$findName->name;
+            //dd($name);
+            $affected = DB::table('LeaveSystem')->insert(
+                            array('id' => $userId,
+                                  'name' => $name,
+                                  'dateStart' => $leaveDateStart,
+                                  'dateEnd' => $leaveEnd,
+                                  'leaveReason' => $leaveReason)
+                            );
+            if($affected) return true;
+            else return false;
+        }
+        else return false;
+    }
+    public function insertEmployee($userId, $name, $userPassword, $birth, $cell,
+                                    $local, $gender, $company, $email, $title, $time, $address)
+    { 
+        //dd($userId, $name, $userPassword, $birth, $cell, $local, $gender, $company, $email, $title, $time, $address);
+
+        if($userId[0]=='E')
+        {
+            $exist=Employee::where('id','=',$userId)->first();
+            if(!$exist)
+            {
+                //dd($name);
+                $affected = DB::table('Employee')->insert(
+                                array('id' => $userId,
+                                    'name' => $name,
+                                    'password' => $userPassword,
+                                    'birth' => $birth,
+                                    'cellPhone' => $cell,
+                                    'localPhone' => $local,
+                                    'gender' => $gender,
+                                    'company' => $company,
+                                    'email' => $email,
+                                    'title' => $title,
+                                    'onBoardTime' => $time,
+                                    'address' => $address
+                                    )
+                                );
+                if($affected) return true;
+                else return false;
+            }
+            else
+            {
+                $error='Id already existed';
+                return $error;
+            }
+        }
+        else return false;
+    }
+
+    public function deleteEmployee($userId)
+    {
+        if($userId[0]=='E')
+        {
+            $affected = DB::table('Employee')->where('id', '=', $userId)->delete();
+            if($affected) return true;
+            else return false;
+        }
+        else return false;
+    }
   /*
     public function getIndividualData($userId, $userPassword)
     {
