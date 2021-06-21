@@ -72,3 +72,53 @@ Route::get('/System2', function () {
 Route::get('/Logo', function () {
     return view('/Logo');
 });
+
+Route::get('/stock_data', function () 
+{
+    return view('/stock_data');
+});
+
+Route::get('/stock_person', function () 
+{
+    return view('/stock_person');
+});
+
+Route::get('/transaction_data', function () 
+{
+    return view('/transaction_data');
+});
+
+Route::get('transaction', function () 
+{
+    return view('/transaction');
+});
+
+Route::get('/stock_ceo_all_data', function () 
+{
+    return view('/stock_ceo_data');
+});
+
+Route::get('/stock_ceo_edit', function () 
+{
+    return view('/stock_ceo_edit');
+});
+
+Route::get('/stock_ceo_person_data', function () 
+{
+    return view('/stock_ceo_person_data');
+});
+
+Route::get('/stock_ceo_person_stock_data', function () 
+{
+    return view('/stock_ceo_person_stock_data');
+});
+
+Route::get('/stock_ceo_person_transaction_data', function () 
+{
+    return view('/stock_ceo_person_transaction_data');
+});
+
+Route::get('/stock_ceo_all_transaction_data', function () 
+{
+    return view('/stock_ceo_transaction_data');
+});
