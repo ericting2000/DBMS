@@ -23,6 +23,7 @@
     a {
       text-decoration: none;
       color: black;
+      outline: none;
     }
 
     a:hover {
@@ -136,6 +137,68 @@
     }
   </style>
   <script>
+    let response = new Object;
+    let data = new Object;
+    function sdata(data_filter){
+      for(let i = 0; i < data_filter.length; i++){
+          if(i == 0)
+            document.getElementById("personneldata").innerHTML ="";
+          //if()
+          var row = "<a href='#detail' data-toggle='modal' data-target='#detail' id=" + i + "><div class='row'>"
+
+          row += "<div class='col-md-12' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;display: flex;' >"
+          row += "<p id='p1'>"+ data_filter[i].name +"</p>"
+          let gen = data_filter[i].gender;
+          if(gen === "male")
+            gen = "男";
+          if(gen === "female")
+            gen = "女";
+          row +=  "<p id='p2'>" + gen + "</p>"
+          let birth = data_filter[i].birth.slice(0,4) + "." + data_filter[i].birth.slice(4,6) + "." + data_filter[i].birth.slice(6);
+          row += "<p id='p3'>" + birth + "</p>"
+          row += "<p id='p4'>" + data_filter[i].title + "</p>"
+          row += "</div></div></a>"
+          console.log(row);
+          document.getElementById("personneldata").innerHTML += row;
+          document.getElementById("name").innerHTML=data_filter[i].name;
+          document.getElementById("ID").innerHTML=data_filter[i].id;
+          if(data_filter[i].gender === "male"){
+            document.getElementById("gender").innerHTML="男";
+          }else{
+            document.getElementById("gender").innerHTML="女";
+          }
+          let B = data_filter[i].birth.slice(0,4) + "." + data_filter[i].birth.slice(4,6) + "." + data_filter[i].birth.slice(6)
+          document.getElementById("birth").innerHTML=B;
+          document.getElementById("title").innerHTML=data_filter[i].title;
+          document.getElementById("onboard").innerHTML=data_filter[i].onBoardTime.replace(/-/g, ".");
+          document.getElementById("address").innerHTML=data_filter[i].address;
+          let L = data_filter[i].localPhone.slice(0, 2) + "-" + data_filter[i].localPhone.slice(2,6) + "-" + data_filter[i].localPhone.slice(6)
+          document.getElementById("local").innerHTML=L;
+          let C = data_filter[i].cellPhone.slice(0, 4) + "-" + data_filter[i].cellPhone.slice(4,7) + "-" + data_filter[i].cellPhone.slice(7)
+          document.getElementById("cell").innerHTML=C;
+          document.getElementById("mail").innerHTML=data_filter[i].email;
+          console.log("modaldeail_activate")
+        }
+        
+    }
+    function modaldetails(i, data_filter){
+
+      
+    }
+    function threshold_g(data, input){
+      return data.filter( data => data.gender === input);
+    }
+    function threshold_n(data, input){
+      input = input[0].toUpperCase() + input.slice(1)
+      return data.filter( data => data.name === input);
+    }
+    function threshold_b(data, input){
+      return data.filter( data => data.birth === input);
+    }
+    function threshold_t(data, input){
+      input = input.toUpperCase();
+      return data.filter( data => data.title === input);
+    }
     function getCookie(cname) {
             var name = cname + "=";
             var decodedCookie = decodeURIComponent(document.cookie);
@@ -151,9 +214,95 @@
             }
           return "";
           }
-    let getdata = () => {
+    async function getdata() {
       document.getElementById("nametag").innerHTML = getCookie("name");
+      let username = getCookie("user");
+      let password = getCookie("pswd");
+      try{
+        response = await fetch("/api/getEmployeeInfo",{
+          method: "POST",
+          headers:{ 'Content-Type': 'application/json'
+                  },
+          body:JSON.stringify({"userId":username ,
+                        "userPassword": password})
+        });
+        data = await response.json();
+        for(let i = 0; i < data.length; i++){
+          var row = "<a href='#detail' data-toggle='modal' data-target='#detail' id=" + i + " onclick='modaldetail(" + i + ")'><div class='row'>"
+
+          row += "<div class='col-md-12' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;display: flex;' >"
+          row += "<p id='p1'>"+ data[i].name +"</p>"
+          let gen = data[i].gender;
+          if(gen === "male")
+            gen = "男";
+          if(gen === "female")
+            gen = "女";
+          row +=  "<p id='p2'>" + gen + "</p>"
+          let birth = data[i].birth.slice(0,4) + "." + data[i].birth.slice(4,6) + "." + data[i].birth.slice(6);
+          row += "<p id='p3'>" + birth + "</p>"
+          row += "<p id='p4'>" + data[i].title + "</p>"
+          row += "</div></div></a>"
+          console.log(row);
+          document.getElementById("personneldata").innerHTML += row;
+        }
+      }catch(err){
+        console.log(err)
+      }
     }
+
+    function search(){
+      let input = document.getElementById("sinput").value;
+      if(input === ""){
+        document.getElementById("personneldata").innerHTML ="";
+        getdata();
+        return;
+      }
+      let data_filter
+      console.log(input);
+      if(input === "男" || input === "女"){
+        if(input === "男")
+        input = "male"
+        if(input === "女")
+        input = "female"
+        data_filter = threshold_g(data, input);
+        sdata(data_filter);
+      }
+      else{
+        data_filter = threshold_b(data, input);
+        if(data_filter !== {})
+          sdata(data_filter);
+        data_filter = threshold_n(data, input);
+        if(data_filter !== {})
+          sdata(data_filter);
+        data_filter = threshold_t(data, input);
+        if(data_filter !== {})
+          sdata(data_filter);
+        
+      }
+      
+    }
+    function modaldetail(i){
+
+      document.getElementById("name").innerHTML=data[i].name;
+      document.getElementById("ID").innerHTML=data[i].id;
+      if(data[i].gender === "male"){
+        document.getElementById("gender").innerHTML="男";
+      }else{
+        document.getElementById("gender").innerHTML="女";
+      }
+      let B = data[i].birth.slice(0,4) + "." + data[i].birth.slice(4,6) + "." + data[i].birth.slice(6)
+      document.getElementById("birth").innerHTML=B;
+      document.getElementById("title").innerHTML=data[i].title;
+      document.getElementById("onboard").innerHTML=data[i].onBoardTime.replace(/-/g, ".");
+      document.getElementById("address").innerHTML=data[i].address;
+      let L = data[i].localPhone.slice(0, 2) + "-" + data[i].localPhone.slice(2,6) + "-" + data[i].localPhone.slice(6)
+      document.getElementById("local").innerHTML=L;
+      let C = data[i].cellPhone.slice(0, 4) + "-" + data[i].cellPhone.slice(4,7) + "-" + data[i].cellPhone.slice(7)
+      document.getElementById("cell").innerHTML=C;
+      document.getElementById("mail").innerHTML=data[i].email;
+      console.log("modaldeail_activate")
+    }
+    
           
   </script>
 
@@ -228,10 +377,11 @@
             <input
               type="text"
               class="form-control"
-              placeholder="關鍵字搜尋(姓名、生日、電話..)"
+              placeholder="關鍵字搜尋(姓名、性別、生日八碼、職稱)"
               aria-label="newpassword"
               aria-describedby="basic-addon1"
               style="width: 80%"
+              id="sinput"
             />
             <button
               type="button"
@@ -244,7 +394,7 @@
                 margin-left: 5px;
                 padding: 5px 35px;
               "
-              s
+              onclick="search()"
             >
               搜尋
             </button>
@@ -292,150 +442,9 @@
               職稱
             </div>
           </div>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
-          <a href="#detail"
-            ><div class="row">
-              <div
-                class="col-md-12"
-                style="
-                  background-color: rgba(235, 235, 235, 0.63);
-                  text-align: center;
-                  padding: 5px 0;
-                  display: flex;
-                "
-              >
-                <p id="p1">張曉華</p>
-                <p id="p2">男</p>
-                <p id="p3">XXXX.XX.XX</p>
-                <p id="p4">員工</p>
-              </div>
-            </div>
-          </a>
+          <div id="personneldata">
+
+          </div>
         </div>
       </content>
     </box>
@@ -475,23 +484,25 @@
               <div
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
+                id="name"
               >
-                張曉華
               </div>
-              <div class="col-md-5" style="font-size: 14pt; padding-bottom: 15px">員工</div>
+              <div class="col-md-5" style="font-size: 14pt; padding-bottom: 15px" id="title"></div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">ID</div>
               <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">生日</div>
               <div
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
+                id="ID"
               >
-                XXXXXXXX
+                
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
+                id="birth"
               >
-                19880813
+                
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">性別</div>
               <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">
@@ -500,14 +511,16 @@
               <div
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
+                id="gender"
               >
-                男
+                
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
+                id="onboard"
               >
-                20180801
+                
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">
                 聯絡地址
@@ -518,14 +531,16 @@
               <div
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
+                id="address"
               >
-                XXXXXXXXXXXX
+                
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
+                id="local"
               >
-                02-1234-2345
+                
               </div>
               <div class="col-md-7" style="color: rgba(0, 0, 0, 0.5)">手機</div>
               <div class="col-md-5" style="color: rgba(0, 0, 0, 0.5)">
@@ -534,14 +549,16 @@
               <div
                 class="col-md-7"
                 style="font-size: 14pt; padding-bottom: 15px"
+                id="cell"
               >
-                0988-888-888
+                
               </div>
               <div
                 class="col-md-5"
                 style="font-size: 14pt; padding-bottom: 15px"
+                id="mail"
               >
-                12345@gmail.com
+                
               </div>
             </div>
           </div>
