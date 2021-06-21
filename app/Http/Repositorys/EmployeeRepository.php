@@ -42,10 +42,11 @@ class EmployeeRepository
     {
         if($userId[0]=='E')
         {
+            
             $findName=Employee::where('id','=',$userId)->first();
             $name=$findName->name;
             //dd($name);
-            $affected = DB::table('LeaveSystem')->where('id', '=', $userId)->insert(
+            $affected = DB::table('LeaveSystem')->insert(
                             array('id' => $userId,
                                   'name' => $name,
                                   'dateStart' => $leaveDateStart,
@@ -57,7 +58,43 @@ class EmployeeRepository
         }
         else return false;
     }
-    
+    public function insertEmployee($userId, $name, $userPassword, $birth, $cell,
+                                    $local, $gender, $company, $email, $title, $time, $address)
+    { 
+        //dd($userId, $name, $userPassword, $birth, $cell, $local, $gender, $company, $email, $title, $time, $address);
+
+        if($userId[0]=='E')
+        {
+            $exist=Employee::where('id','=',$userId)->first();
+            if(!$exist)
+            {
+                //dd($name);
+                $affected = DB::table('Employee')->insert(
+                                array('id' => $userId,
+                                    'name' => $name,
+                                    'password' => $userPassword,
+                                    'birth' => $birth,
+                                    'cellPhone' => $cell,
+                                    'localPhone' => $local,
+                                    'gender' => $gender,
+                                    'company' => $company,
+                                    'email' => $email,
+                                    'title' => $title,
+                                    'onBoardTime' => $time,
+                                    'address' => $address
+                                    )
+                                );
+                if($affected) return true;
+                else return false;
+            }
+            else
+            {
+                $error='Id already existed';
+                return $error;
+            }
+        }
+        else return false;
+    }
   /*
     public function getIndividualData($userId, $userPassword)
     {

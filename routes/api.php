@@ -24,11 +24,14 @@ Route::post('/getUserInfo','App\Http\Controllers\StockHolderController@getIndivi
 //修改密碼
 Route::post('/modifyPassword','App\Http\Controllers\StockHolderController@modifyPassword');
 
-//個人請假紀錄
-Route::get('/getLeaveRecord','App\Http\Controllers\EmployeeController@getLeaveData');
-
 //人事資料總覽
 Route::post('/getEmployeeInfo','App\Http\Controllers\EmployeeController@getEmployeeInfo');
+
+//人事資料總覽(新增)
+Route::post('/addNewEmployee','App\Http\Controllers\EmployeeController@insertEmployee');
+
+//個人請假紀錄
+Route::get('/getLeaveRecord','App\Http\Controllers\EmployeeController@getLeaveData');
 
 //員工請假紀錄
 Route::post('/getAllLeaveRecord','App\Http\Controllers\EmployeeController@getAllLeaveData');

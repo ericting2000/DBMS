@@ -29,7 +29,13 @@ class EmployeeService
     {
         return $this->EmployeeRepository->makeLeave($userId, $leaveDateStart, $leaveEnd, $leaveReason);
     }
-    
+    public function insertEmployee($userId, $name, $userPassword, $birth, $cell,
+                                                    $local, $gender, $company, $email, $title, $time, $address)
+    {
+        return $this->EmployeeRepository->insertEmployee($userId, $name, $userPassword, $birth, $cell,
+                                                    $local, $gender, $company, $email, $title, $time, $address);
+    }
+                                    
 /*
     public function getIndividualData($userId, $userPassword)
     {

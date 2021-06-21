@@ -90,7 +90,35 @@ class EmployeeController extends BaseController
             return response('error: data error',400);
         }
     }
-    
+
+    public function insertEmployee(Request $request)
+    {
+        $userInfo=$request;
+        $userId=$userInfo->userId;
+        $userPassword=$userInfo->userPassword;
+        $name=$userInfo->userName;
+        $birth=$userInfo->userBirth;
+        $cell=$userInfo->userCellPhone;
+        $local=$userInfo->userLocalPhone;
+        $gender=$userInfo->userGender;
+        $company=$userInfo->company;
+        $email=$userInfo->userEmail;
+        $title=$userInfo->userTitle;
+        $time=$userInfo->onBoardTime;
+        $address=$userInfo->userAddress;
+        if(empty($userId || $userPassword || $birth || $cell || $local || $gender 
+                         || $company || $email || $title || $time || $address)){
+            return response('error: exist empty',400);
+        }
+        $insert=$this->EmployeeService->insertEmployee($userId, $name, $userPassword, $birth, $cell,
+                                                    $local, $gender, $company, $email, $title, $time, $address);
+        if($insert){
+            return response()->json($insert,200);
+        }
+        else{
+            return response('error: data error',400);
+        }
+    }
     
 /*
     public function getIndividualInfo(Request $request)
