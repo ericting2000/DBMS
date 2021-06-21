@@ -158,8 +158,7 @@
       
     }
     function wipe(){
-      let id = document.getElementById("id")
-      console.log(id)
+     
     }
     function sdata(data_filter){
       for(let i = 0; i < data_filter.length; i++){
