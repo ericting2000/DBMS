@@ -32,6 +32,12 @@ class StockHolderService
 
     public function makeTransaction($userId, $share, $lot, $type, $dateTime)
     {
-        return $this->StockHolderRepository->makeTransaction($userId, $share, $lot, $type, $amount, $dateTime);
+        return $this->StockHolderRepository->makeTransaction($userId, $share, $lot, $type, $dateTime);
+    }
+
+    public function modifyStockHolder($userId, $name, $userPassword, $birth, $cell,
+                                                    $title, $address)
+    {
+        return $this->StockHolderRepository->modifyStockHolder($userId, $name, $userPassword, $birth, $cell, $title, $address);
     }
 }

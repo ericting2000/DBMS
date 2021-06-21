@@ -4,7 +4,7 @@ namespace App\Http\Repositorys;
 use Illuminate\Support\Facades\DB;
 use App\Models\Employee;
 use App\Models\LeaveSystem;
-
+use \Datetime;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -44,6 +44,10 @@ class EmployeeRepository
         {
             
             $findName=Employee::where('id','=',$userId)->first();
+            $datetimeStart = Datetime::createFromFormat('Y-m-d', $leaveDateStart);
+            $datetimeStart=$datetimeStart->format('Y-m-d');
+            $datetimeEnd = Datetime::createFromFormat('Y-m-d', $leaveEnd);
+            $datetimeEnd=$datetimeEnd->format('Y-m-d');
             $name=$findName->name;
             //dd($name);
             $affected = DB::table('LeaveSystem')->insert(
@@ -69,6 +73,9 @@ class EmployeeRepository
             if(!$exist)
             {
                 //dd($name);
+                $datetime = Datetime::createFromFormat('Y-m-d', $time);
+                $datetime=$datetime->format('Y-m-d');
+                //dd($datetime);
                 $affected = DB::table('Employee')->insert(
                                 array('id' => $userId,
                                     'name' => $name,
@@ -80,7 +87,7 @@ class EmployeeRepository
                                     'company' => $company,
                                     'email' => $email,
                                     'title' => $title,
-                                    'onBoardTime' => $time,
+                                    'onBoardTime' => $datetime,
                                     'address' => $address
                                     )
                                 );
@@ -106,6 +113,42 @@ class EmployeeRepository
         }
         else return false;
     }
+
+    public function modifyEmployee($userId, $name, $userPassword, $birth, $cell,
+                                    $local, $gender, $email, $title, $address)
+    { 
+        //dd($userId, $name, $userPassword, $birth, $cell, $local, $gender, $company, $email, $title, $time, $address);
+
+        if($userId[0]=='E')
+        {
+            $exist=Employee::where('id','=',$userId)->first();
+            if($exist)
+            {
+                //dd($name);
+                $affected = DB::table('Employee')->where('id',$userId)
+                                ->where('password',$userPassword)->update(
+                                array('name' => $name,
+                                    'birth' => $birth,
+                                    'cellPhone' => $cell,
+                                    'localPhone' => $local,
+                                    'gender' => $gender,
+                                    'email' => $email,
+                                    'title' => $title,
+                                    'address' => $address
+                                    )
+                                );
+                if($affected) return true;
+                else return false;
+            }
+            else
+            {
+                $error='Id not existed';
+                return $error;
+            }
+        }
+        else return false;
+    }
+
   /*
     public function getIndividualData($userId, $userPassword)
     {

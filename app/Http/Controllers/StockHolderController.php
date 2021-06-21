@@ -101,13 +101,12 @@ class StockHolderController extends BaseController
         $share=$request->share;
         $lot=$request->lot;
         $type=$request->type;
-        $amount=$request->amount;
         $dateTime=$request->dateTime;
         if(empty($userId))
         {
             return response('error: exist empty',400);
         }
-        $transaction=$this->StockHolderService->makeTransaction($userId, $share, $lot, $type, $amount, $dateTime);
+        $transaction=$this->StockHolderService->makeTransaction($userId, $share, $lot, $type, $dateTime);
         if($transaction){
             return response()->json($transaction,200);
         }
@@ -116,4 +115,28 @@ class StockHolderController extends BaseController
         }
     }
 
+    public function modifyStockHolder(Request $request)
+    {
+        $userInfo=$request;
+        $userId=$userInfo->userId;
+        $userPassword=$userInfo->userPassword;
+        $name=$userInfo->userName;
+        $birth=$userInfo->userBirth;
+        $cell=$userInfo->userCellPhone;
+        $title=$userInfo->userTitle;
+        $address=$userInfo->userAddress;
+        if(empty($userId || $userPassword || $name ||$birth || $cell 
+                         || $title || $address)){
+            return response('error: exist empty',400);
+        }
+        $modify=$this->StockHolderService->modifyStockHolder($userId, $name, $userPassword, $birth, $cell,
+                                                    $title, $address);
+        if($modify){
+            return response()->json($modify,200);
+        }
+        else{
+            return response('error: data error',400);
+        }
+    }
+    
 }    
