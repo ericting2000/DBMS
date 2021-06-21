@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE blade.php>
+<blade.php lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -15,10 +15,6 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
-    />
 
     <title></title>
   </head>
@@ -28,7 +24,7 @@
       text-decoration: none;
       color: black;
     }
-
+    
     a:hover {
       text-decoration: none;
     }
@@ -40,7 +36,7 @@
       filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.25));
     }
 
-    html,
+    blade.php,
     body,
     box,
     content {
@@ -53,6 +49,16 @@
       height: auto;
       width: 230px;
       border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+      border-radius: 14px 14px 0 0;
+      background-color: #003865;
+      border-bottom: 0 none;
+    }
+
+    .modal-content {
+      border-radius: 16px;
     }
 
     .logo {
@@ -109,7 +115,9 @@
       margin-left: 55px;
       width: 90%;
     }
+    
   </style>
+
   <script>
     function getCookie(cname) {
             var name = cname + "=";
@@ -128,7 +136,7 @@
           }
     let loadname = () => {
       document.getElementById("nametag").innerHTML = getCookie("name");
-    }
+    }        
   </script>
 
   <body onload="loadname()">
@@ -170,96 +178,47 @@
         </div>
         <div class="sidebar">
           <ul class="menu">
-            <a href="./Staff1"><li>個人資料總覽</li></a>
-            <a href="./Staff2"><li>請假紀錄總覽</li></a>
-            <a href="">
-              <li
-                style="
+            <a href="./Boss1"><li>人事資料總覽</li></a>
+            <a href="./Boss2"><li>人事資料編輯</li></a>
+            <a href="./Boss3"><li>請假紀錄總覽</li></a>
+            <a href="./Boss4"><li>個人資料總覽</li></a>
+            <a href="./Boss5"><li>個人請假紀錄</li></a>
+            <a href="./Boss6">
+              <li>個人請假系統</li>
+            </a>
+            <a href=><li style="
                   background-color: rgba(108, 159, 200, 0.77);
                   color: white;
-                "
-              >
-                個人請假系統
-              </li>
-            </a>
+                ">系統異常報修</li></a>
           </ul>
         </div>
       </nav>
 
       <content>
-        <p style="font-size: 36px; padding: 80px 50px 50px">個人請假系統</p>
+        <p style="font-size: 36px; padding: 80px 50px 50px">系統異常報修</p>
         <div class="data" style="display: block">
           <div class="row">
-            <div
-              class="col-md-12"
-              style="font-size: 32px; padding-bottom: 20px"
-            >
-              姓名
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">ID</div>
-            <div class="col-md-3" style="color: rgba(0, 0, 0, 0.5)">職稱</div>
-            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px">
-              XXXXXXXX
-            </div>
-            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px">
-              XXXXXXXX
-            </div>
-            <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">性別</div>
-            <div class="col-md-3" style="color: rgba(0, 0, 0, 0.5)">生日</div>
-            <div class="col-md-9" style="font-size: 14pt; padding-bottom: 15px">
-              男
-            </div>
-            <div class="col-md-3" style="font-size: 14pt; padding-bottom: 15px">
-              XXXXXXXX
-            </div>
-            <div class="col-md-9" style="color: rgba(0, 0, 0, 0.5)">
-              請假日期
-            </div>
-            <div class="col-md-3" style="color: rgba(0, 0, 0, 0.5)">
-              請假類別
-            </div>
-            <div class="col-md-2" style="padding-top: 5px">
-              <div class="input-group-btn" for="txtDate">
+            <div class="col-md-12" style="color: rgba(0, 0, 0, 0.5)">主旨</div>
+            <div class="col-md-12" style="font-size: 14pt; padding-bottom: 15px">
                 <input
                   type="text"
-                  name="date"
-                  class="form-control datepicker"
-                  value="YYYY.MM.DD"
-                  style="text-align: center"
+                  class="form-control"
+                  placeholder="請輸入問題主旨"
+                  value=""
+                  style="width: 70%"
                 />
-                <span class="glyphicon glyphicon-calendar"></span>
-              </div>
             </div>
-            <div col-md-1 style="padding-top: 5px">
-              <p style="font-size: 18pt; font-weight: 400">~</p>
-            </div>
-            <div class="col-md-2" style="padding-top: 5px">
-              <div class="input-group-btn" for="txtDate">
+            <div class="col-md-12" style="color: rgba(0, 0, 0, 0.5)">問題描述</div>
+            <div class="col-md-10" style="font-size: 14pt; padding-bottom: 15px">
                 <input
                   type="text"
-                  name="date"
-                  class="form-control datepicker"
-                  value="YYYY.MM.DD"
-                  style="text-align: center"
+                  class="form-control"
+                  placeholder="請輸入問題描述"
+                  value=""
+                  style="width: 85%"
                 />
-                <span class="glyphicon glyphicon-calendar"></span>
-              </div>
             </div>
-            <div
-              class="col offset-5"
-              style="padding-top: 5px; padding-left: 0px; margin-right: 80px"
-            >
-              <select class="custom-select">
-                <option selected>請選擇</option>
-                <option value="">事假</option>
-                <option value="">病假</option>
-                <option value="">公假</option>
-                <option value="">產假</option>
-              </select>
-            </div>
-            <div class="col offset-9" style="padding-top: 30px">
+            <div class="col-md-2"">
               <button
                 type="button"
                 class="btn btn-primary"
@@ -268,26 +227,21 @@
                   border-style: none;
                   color: white;
                   font-size: 14pt;
-                  padding-bottom: 0;
-                  padding-top: 0;
-                  margin-bottom: 15px;
+                  padding-bottom: 5px;
+                  padding-top: 5px;
                 "
                 data-toggle="modal"
                 data-target="#passwordchange"
-                onclick="alertsend()"
               >
-                確認送出
+                報修
               </button>
-              <!--測試用-->
-              <script>
-                const alertsend = () => alert('成功送出');
-              </script>
             </div>
+
           </div>
         </div>
       </content>
     </box>
-
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
@@ -305,12 +259,6 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
-    <script>
-      $('.datepicker').datepicker({
-        format: 'yyyy.mm.dd',
-      });
-    </script>
+    
   </body>
-</html>
+</blade.php>
