@@ -134,8 +134,10 @@
         data = await response.json();
         for(let i = 0; i < data.length; i++){
           var row = "<div class='row'>"
-
-          row += "<div class='col-md-7' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;' >" + data[i].date.slice(0,4) + "." + data[i].date.slice(4,6) + "." + data[i].date.slice(6) + "</div>";
+          if(data[i].dateStart === data[i].dateEnd)
+            row += "<div class='col-md-7' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;' >" + data[i].dateStart.replace(/-/g,".") + "</div>";
+          else
+            row += "<div class='col-md-7' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;' >" + data[i].dateStart.replace(/-/g,".") + "~" + data[i].dateEnd.replace(/-/g,".") +"</div>";
           let reason = data[i].leaveReason;
           if(reason === "sick")
             reason = "病假";
@@ -183,7 +185,10 @@
           //if()
             var row = "<div class='row'>"
 
-            row += "<div class='col-md-7' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;' >" + data_filter[i].date.slice(0,4) + "." + data_filter[i].date.slice(4,6) + "." + data_filter[i].date.slice(6) + "</div>";
+            if(data_filter[i].dateStart === data_filter[i].dateEnd)
+              row += "<div class='col-md-7' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;' >" + data_filter[i].dateStart.replace(/-/g,".")+ "</div>";
+            else
+              row += "<div class='col-md-7' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;' >" + data_filter[i].dateStart.replace(/-/g,".") + "~"  + data_filter[i].dateStart.replace(/-/g,".") +"</div>";
             let reason = data_filter[i].leaveReason;
             if(reason === "sick")
               reason = "病假";
