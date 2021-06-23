@@ -199,6 +199,9 @@
       input = input.toUpperCase();
       return data.filter( data => data.title === input);
     }
+    function threshold_d(data, input){
+      return data.filter( data => data.id !== input);
+    }
     function getCookie(cname) {
             var name = cname + "=";
             var decodedCookie = decodeURIComponent(document.cookie);
@@ -227,6 +230,7 @@
                         "userPassword": password})
         });
         data = await response.json();
+        data = threshold_d(data, username)
         for(let i = 0; i < data.length; i++){
           var row = "<a href='#detail' data-toggle='modal' data-target='#detail' id=" + i + " onclick='modaldetail(" + i + ")'><div class='row'>"
 

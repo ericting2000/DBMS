@@ -198,6 +198,7 @@
                 console.log(data);
                 alert("修改成功！");
                 $('#passwordchange').modal('hide');
+                document.cookie = "pswd=" + newpassword.toString();
             } catch (err) {
                 console.log(err);
             }

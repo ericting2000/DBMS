@@ -212,6 +212,9 @@
       input = input.toUpperCase();
       return data.filter( data => data.title === input);
     }
+    function threshold_d(data, input){
+      return data.filter( data => data.id !== input);
+    }
     function getCookie(cname) {
             var name = cname + "=";
             var decodedCookie = decodeURIComponent(document.cookie);
@@ -240,6 +243,7 @@
                         "userPassword": password})
         });
         data = await response.json();
+        data = threshold_d(data, username);
         for(let i = 0; i < data.length; i++){
           var row = "<a href='#detail' data-toggle='modal' data-target='#detail' id=" + i + " onclick='modaldetail(" + i + ")'><div class='row'>"
 
@@ -313,7 +317,7 @@
       
     }
     async function Modpassword() {
-            let username = getCookie("user");
+            let username = document.getElementById("user").value;
             let oldpassword = document.getElementById("oldpassword").value;
             let newpassword = document.getElementById("newpassword").value;
             let confirmnewpassword = document.getElementById("confirmnewpassword").value;
@@ -752,7 +756,19 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+
           <div class="modal-body">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="請輸入ID"
+                aria-label="newpassword"
+                aria-describedby="basic-addon1"
+                id="user"
+              />
+            </div>
+
             <div class="input-group mb-3">
               <input
                 type="password"

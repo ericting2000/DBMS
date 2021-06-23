@@ -146,7 +146,7 @@
           if(reason === "official")
             reason = "公假";
           //記得檢查修改
-          if(reason === "bereavement")
+          if(reason === "breavement")
             reason = "喪假";
           row += "<div class='col-md-5' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;'>" + reason + "</div>"
           row += "</div>"
@@ -197,7 +197,7 @@
             if(reason === "official")
               reason = "公假";
             //記得檢查修改
-            if(reason === "dead")
+            if(reason === "breavement")
               eason = "喪假";
             row += "<div class='col-md-5' style='background-color: rgba(235, 235, 235, 0.63);text-align: center;padding: 5px 0;'>" + reason + "</div>"
             row += "</div>"

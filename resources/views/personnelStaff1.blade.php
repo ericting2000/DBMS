@@ -117,6 +117,7 @@
     }
   </style>
   <script>
+        let stat = 0;
         function getCookie(cname) {
             var name = cname + "=";
             var decodedCookie = decodeURIComponent(document.cookie);
@@ -134,6 +135,7 @@
         }
 
         async function getdata() {
+            
             document.getElementById("nametag").innerHTML = getCookie("name");
             let username = getCookie("user");
             let password = getCookie("pswd"); 
@@ -200,6 +202,7 @@
                 console.log(data);
                 alert("修改成功！");
                 $('#passwordchange').modal('hide');
+                document.cookie = "pswd=" + newpassword.toString();
             } catch (err) {
                 console.log(err);
             }
