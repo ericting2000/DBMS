@@ -157,9 +157,29 @@
     async function save(){
       
     }
-    function wipe(){
-     
+    async function wipe(){
+     let deleteid = document.getElementById("deleteid").value;
+     let bosspassword = document.getElementById("bosspassword").value;
+     if(bosspassword !== getCookie("pswd")){
+        alert("請確認輸入正確的密碼！");
+        return;
+     }
+      try{
+        response = await fetch("/api/deleteEmployee",{
+          method: "POST",
+          headers:{ 'Content-Type': 'application/json'
+                  },
+          body:JSON.stringify({"userId":deleteid ,})
+        })
+        data = await response.json();
+        if(data)
+          console.log(data);
+      }catch(err){
+          console.log(err);
+      }
+      window.location.reload();
     }
+
     function sdata(data_filter){
       for(let i = 0; i < data_filter.length; i++){
           if(i == 0)
@@ -705,7 +725,9 @@
                 border-style: none;
                 padding: 6px 20px;
               "
-              onclick=""
+              data-toggle="modal"
+              data-target="#delete"
+              
             >
               刪除
             </button>
@@ -721,6 +743,78 @@
               onclick="save()"
             >
               儲存
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--delete-->
+    <div
+      class="modal fade"
+      id="delete"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5
+              class="modal-title"
+              id="exampleModalCenterTitle"
+              style="color: white; font-weight: 400"
+            >
+              您確認要移除嗎？
+            </h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              style="color: white; font-size: 30px"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="請輸入欲刪除員工之ID"
+                aria-label="deleteid"
+                aria-describedby="basic-addon1"
+                id="deleteid"
+              />
+            </div>
+
+            <div class="input-group mb-3">
+              <input
+                type="password"
+                class="form-control"
+                placeholder="請輸入您的密碼"
+                aria-label="bosspassword"
+                aria-describedby="basic-addon1"
+                id="bosspassword"
+              />
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              style="
+                background-color: #003865;
+                border-style: none;
+                border-radius: 10px;
+              "
+              onclick="wipe()"
+            >
+              確認刪除
             </button>
           </div>
         </div>
