@@ -107,6 +107,7 @@ class EmployeeRepository
     {
         if($userId[0]=='E')
         {
+            $affected = DB::table('LeaveSystem')->where('id', '=', $userId)->delete();
             $affected = DB::table('Employee')->where('id', '=', $userId)->delete();
             if($affected) return true;
             else return false;
