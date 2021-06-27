@@ -19,6 +19,7 @@ class Stockholder extends Migration
             $table->string('company');
             $table->string('title');
             $table->string('name');
+            $table->string('gender');
             $table->char('birth', 8);
             $table->char('phoneNumber', 10);
             $table->string('address');
