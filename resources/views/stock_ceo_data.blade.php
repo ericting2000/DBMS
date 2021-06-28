@@ -1,35 +1,37 @@
-
-<!DOCTYPE html>
-<html>
+<!DOCTYPE blade.php>
+<blade.php lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-  <title>Document</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Landing Page</title>
+</head>
+
 <style>
 
-.myDiv 
-{
-  position:absolute;
-  background-color:#003865;
-  height:95px;
-  width:100%;
+ header
+ {
+  left:0px;
+  height: 95px;
+  background: #003865;
   filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.25));
-  top:0px;
-  left:0px;
-}
-
-.sidenav
+ }
+ 
+ blade.php, body, box,content 
+ {
+  height: 100%;
+    width: 100%;
+    overflow: auto;
+ }
+ 
+ .mydiv2 
 {
-  position:absolute;
-  width:267px;
-  height:929px;
-  left:0px;
-  top:251px;
-}
-
-.myDiv2 
-{
-  position:absolute;
   width:122px;
   height:122px;
   left:68px;
@@ -37,431 +39,129 @@
   background: #C4C4C4;
   border-radius: 50%;
 }
-
-.myDiv3
+ 
+ .side 
 {
-  position: absolute;
-  width: 1096px;
-  height: 494px;
-  left: 301px;
-  top: 270px;
-    box-shadow: 5px 5px 10px 4px #c4c4c4;
+  width:267px;
+    height: auto;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.myDiv4
-{
-  width: 995px;
-  height: 42px;
-    position: absolute;
-  left: 349px;
-  top: 353px;
-  background: rgba(108, 159, 200, 0.49);
-    font-size: 18px;
-}
+ 
+ .side_bar
+ {
+    width:100%;
+  height: auto;
+ }
+ 
+ .side_bar a 
+ {
+    text-align:center;
+    list-style: none;
+    font-size: 24px;
+    font-weight: 400;
+    display:block;
+    line-height: 59px;
+    color:#000000;
+ }
+ a:hover
+ {
+    color:#ffffff;
+    background-color: rgba(108, 159, 200, 0.77);
+ }
+ 
+ d
+ {
+    color:#000000;
+    background-color: rgba(235, 235, 235, 0.63);
+ }
+ d:hover
+ {
+    color:#ffffff;
+    background-color: #003865;
+ }
 
-
-
-.mydiv4 r 
-{
-  padding: 10px 10px 10px 10px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-  font-weight: 500;
-  font-family:Roboto;
-}
-
-.mydiv4 r2 
-{
-  padding: 10px 10px 10px 10px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-  font-weight: 500;
-  font-family:Roboto;
-}
-
-.mydiv4 r3 
-{
-  padding: 10px 10px 10px 10px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-  font-weight: 500;
-  font-family:Roboto;
-}
-
-.mydiv4 r4
-{
-  padding: 10px 10px 10px 10px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block;
-  font-weight: 500;
-  font-family:Roboto;
-}
-
-
-
-.search-btn 
-{
-   border: none;
-  position: absolute;
-  width: 91px;
-  height: 32px;
-  left: 712px;
-  top: 0px;
-  color: #ffffff;
-  border-radius: 6px;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.search-btn {background-color: #003865;}
-
-.button
-{
-  border: none;
-  position: absolute;
-  width: 91px;
-  height: 32px;
-  left: 1051px;
-  top: 296px;
-  color: #ffffff;
-  border-radius: 6px;
-    text-align: center;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.button1 {background-color: #003865;}
-
-.sidenav a {
-  padding: 19px 6px 19px 59px;
-  text-decoration: none;
-  font-size: 25px;
-  color: black;
-  display: block;
-}
-
-
-.sidenav a:hover {
-  color: #ffffff;
-  background-color:rgba(108, 159, 200, 0.77);
-}
-
-.search 
-{
-  position: absolute;
+ .mydiv3
+ {
+  position:relative;
+  left:307px;
+  top:-500px;
+    font-family: Roboto;
+  font-style: normal; 
+  font-weight: 600; 
+  font-size: 40px; 
+  line-height: 47px;
+  color: #000000;
+ }
+ 
+ .searchbox
+ {
   width: 679px;
   height: 32px;
-  left: 349px;
-  top: 296px;
+  position:relative;
+  left: 38px;
+  top: 28px;
+  background: #FFFFFF;
+  border: 1px solid #3E3A39;
   box-sizing: border-box;
   border-radius: 6px;
-  border: 1px solid #3E3A39;
+ }
+ 
+ .mydiv4
+ {
+  position: relative;
+  left: 307px;
+  top: -460px;
+  width: 1096px;
+  height: 494px;
   background: #FFFFFF;
-}
-
-.search-bar 
-{
-  position: absolute;
-  top:5px;
-  left: 17px;
-  width: 266px;
-  height: 19px;
-  font-size: 16px;
-  background: #FFFFFF;
-  border:none;
-}
-
-.button2
-{
-  position: absolute;
-  left: 1316px;
-  top: 36px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 28px;
-  color: #FFFFFF;
-  border-radius:6px;
-  border:none;
-  cursor:pointer;
-  background-color:#003865;
-}
-
-.button3
-{
+  box-shadow: 0px 0px 11px 7px rgba(0, 0, 0, 0.04);
+ }
+ 
+ .sbutton
+ {
   position: relative;
-  left: 0px;
-  top: 42px;
-  width:995px;
-  height:42px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 42px;
-  color:#ffffff;
-  border:none;
-  cursor:pointer;
-  background: rgba(235, 235, 235, 0.63);
-  display:block;
-  position: relative;
-}
-
-.button4
+    left: 750px;
+  top: -4px;
+  width: 91px;
+  height: 32px;
+  background: rgba(0, 56, 101, 0.86);
+  border-radius: 6px;
+    color:#ffffff;
+    font-size:18px;
+    line-height:21px;
+    font-family:Roboto;
+    border:none;
+    cursor:pointer;
+    display:block;
+    text-align:center;
+ }
+ 
+ .col-md-12, #p1, #p2, #p3,#p4 
+ {
+      width: 25%;
+      margin: 0;
+ }
+ 
+ .modal-header 
+ {
+  background: #003865;
+  border-radius: 16px 16px 0px 0px;
+    border-bottom: 0 none;
+    width: 730px;
+  height: 50px;
+ }
+ 
+.modal-body 
 {
-  position: relative;
-  left: 0px;
-  top: 42px;
-  width:995px;
-  height:42px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height:42px;
-  color:#ffffff;
-  border:none;
-  cursor:pointer;
-  background: rgba(235, 235, 235, 0.63);
-  display:block;
-  position: relative;
-}
-
-.button5
-{
-  position: relative;
-  left: 0px;
-  top: 42px;
-  width:995px;
-  height:42px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 42px;
-  color:#ffffff;
-  border:none;
-  cursor:pointer;
-  background: rgba(235, 235, 235, 0.63);
-  display:block;
-  position: relative;
-}
-
-.button6
-{
-  position: relative;
-  left: 0px;
-  top: 42px;
-  width:995px;
-  height:42px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 42px;
-  color:#ffffff;
-  border:none;
-  cursor:pointer;
-  background: rgba(235, 235, 235, 0.63);
-  display:block;
-  position: relative;
-}
-
-.button7
-{
-  position: relative;
-  left: 0px;
-  top: 42px;
-  width:995px;
-  height:42px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 42px;
-  color:#ffffff;
-  border:none;
-  cursor:pointer;
-  background: rgba(235, 235, 235, 0.63);
-  display:block;
-  position: relative;
-}
-
-.button8
-{
-  position: relative;
-  left: 0px;
-  top: 42px;
-  width:995px;
-  height:42px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 42px;
-  color:#ffffff;
-  border:none;
-  cursor:pointer;
-  background: rgba(235, 235, 235, 0.63);
-  display:block;
-  position: relative;
-}
-
-.button9
-{
-  position: relative;
-  left: 0px;
-  top: 42px;
-  width:995px;
-  height:42px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 42px;
-  color:#ffffff;
-  border:none;
-  cursor:pointer;
-  background: rgba(235, 235, 235, 0.63);
-  display:block;
-  position: relative;
-}
-
-.button10
-{
-  position: relative;
-  left: 0px;
-  top: 42px;
-  width:995px;
-  height:42px;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 42px;
-  color:#ffffff;
-  border:none;
-  cursor:pointer;
-  background: rgba(235, 235, 235, 0.63);
-  display:block;
-  position: relative;
-}
-
-
-.button3 z 
-{ 
-  background: rgba(235, 235, 235, 0.63);
-  color:#000000;
-  display:block;
-}
-
-.button4 y
-{
-  background: rgba(235, 235, 235, 0.63);
-  color:#000000;
-  display:block;
-}
-
-.button5 x
-{
-  background: rgba(235, 235, 235, 0.63);
-  color:#000000;
-  display:block;
-}
-
-.button6 w
-{
-  background: rgba(235, 235, 235, 0.63);
-  color:#000000;
-  display:block;
-}
-
-.button7 v
-{ 
-  background: rgba(235, 235, 235, 0.63);
-  color:#000000;
-  display:block;
-}
-
-.button8 l
-{
-  background: rgba(235, 235, 235, 0.63);
-  color:#000000;
-  display:block;
-}
-
-.button9 t
-{
-  background: rgba(235, 235, 235, 0.63);
-  color:#000000;
-  display:block;
-}
-
-.button10 m
-{
-  background: rgba(235, 235, 235, 0.63);
-  color:#000000;
-  display:block;
-}
-
-
-.button3 z:hover 
-{
-  color: #ffffff;
-  background-color:#003865;
-  display:block;
-}
-
-.button4 y:hover 
-{
-  color: #ffffff;
-  background-color:#003865;
-}
-
-.button5 x:hover 
-{
-  color: #ffffff;
-  background-color:#003865;
-}
-
-.button6 w:hover 
-{
-  color: #ffffff;
-  background-color:#003865;
-}
-
-.button7 v:hover 
-{
-  color: #ffffff;
-  background-color:#003865;
-}
-
-.button8 l:hover 
-{
-  color: #ffffff;
-  background-color:#003865;
-}
-
-.button9 t:hover 
-{
-  color: #ffffff;
-  background-color:#003865;
-}
-
-.button10 m:hover 
-{
-  color: #ffffff;
-  background-color:#003865;
+  position:relative;
+    left:372px;
+    top:250px;
+  border-radius: 16px;
+    width:730px;
+    height:403px;
+    item-align:center;
+    background: #ffffff;
 }
 
 .modal 
@@ -479,234 +179,353 @@
   backdrop-filter: blur(17px);
 }
 
-/* Modal Content */
-.modal-content 
+.dropdown 
 {
-  position: relative;
-  top:100px;
-  left:200px;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  height:403px;
-  width: 730px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
-  border-radius:16px;
-}
-
-/* Add Animation */
-@-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0} 
-  to {top:0; opacity:1}
-}
-
-@keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
-}
-
-/* The Close Button */
-.close 
-{
+  float: left;
+  overflow: auto;
   position:relative;
-  left:-20px;
-  top:5px;
+  left:1316px;
+}
+
+
+.dropdown, .dropbtn 
+{
+  font-size: 24px;  
+  border: none;
+  outline: none;
   color: white;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus 
-{
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.modal-header 
-{
-  position:relative;
-  left:0px;
-  top:-20px;
-  width:730px;
-  height:50px;
   background-color: #003865;
-  border-radius: 16px 16px 0px 0px;
-  color: white;
+  font-family: Roboto;
+  margin: 0;
 }
 
-.modal-body {padding: 2px 16px;}
-
-.modal-footer 
+.dropdown-content 
 {
+  position:relative;
+  display: none;
   background-color: #ffffff;
-  border-radius: 0px 0px 16px 16px;
-  color: white;
+  color:#000000;
+  z-index: 1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
+.dropdown-content op
+{
+  float: none;
+  color: #000000;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  font-size:20px;
+  line-height:36px;
+}
 
+.dropdown-content:hover
+{
+  background-color: #f0f0f0;
+}
+
+.dropdown:hover .dropdown-content 
+{
+  display: block;
+}
 
 </style>
-</head>
-<body>
 
-<div class="myDiv">
-  <p style="position:absolute; margin-left:54px; margin-top:31px; 
-  margin-height:33px; 
-  font-size:30px; color:#ffffff; line-height:35px; 
-  font-family:Roboto">股東資料管理系統</p>
-  <button class="button2">王小明</button>
-</div>
+<script>
+let data = new Object;
+let response = new Object;
 
-<div class="myDiv2">
-  <p><br></p>
-  </div>
 
-<div class="sidenav">
-  <a href="./stock_ceo_data.html">股東資料總覽</a>
-  <a href="./stock_ceo_edit.html">股東資料編輯</a>
-  <a href="./stock_ceo_transaction_data.html">交易紀錄總覽</a>
-  <a href="./stock_ceo_person_data.html">個人資料總覽</a>
-  <a href="./stock_ceo_person_stock_data.html">個人股票總覽</a>
-  <a href="./stock_ceo_person_transaction_data.html">個人交易紀錄</a>
-  <a href="./stock_ceo_transaction.html">股票交易系統</a>
-  <a href="#">系統異常報修</a>
-</div>
+function formData(inputData)
+{
+  for(let i = 0; i < inputData.length; i++)
+  {
+    if(i == 0)
+      document.getElementById("stockAllData").innerHTML = "";
 
-<div class="main">
-  <p style="position: absolute; width: 293px; height: 67px; left: 307px;
-  top: 150px; font-size:40px; font-family:Roboto; font-weight:1000;">股東資料總覽</p>
-    <div class="myDiv3">
-  <p><br></p>
-  </div>
-    <div class="search">
-    <input class="search-bar" type="text" name="search" id="search" placeholder="關鍵字搜尋(生日、姓名、電話)............">
-    <button class="search-btn">搜尋
-      <i class="fas fa-search"></i>
-    </button>
-  </div>
-    搜尋
+    var row = "<d href='#detail'> + <d class='row' id="mydata+i"> style='position:relative; top:23px; left:48px; width:995px;'>"
     
-    <div class="myDiv4">
-      <r style="position:absolute; left:90px; top:10px;
-      font-weight:700;">股東姓名</r>
-        <r2 style="position:absolute; left:350px; top:10px; font-weight:700;">姓別</r2>
-        <r3 style="position:absolute; left:600px; top:10px; font-weight:700;">生日</r3>
-        <r4 style="position:absolute; left:840px; top:10px; font-weight:700;">ID</r4>
-    <div class="button3">
-    <z id="mydata" style="font-family:Roboto; font-size:16px;         ">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- 張曉華&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- &emsp;&emsp;&emsp;&ensp;男  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;2020.06.18&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;SXXXX
-  </z></div>
-  
-  <div class="button4">
-  <y id="mydata2" style="font-family:Roboto; font-size:16px;         ">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- 張曉華&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- &emsp;&emsp;&emsp;&ensp;男  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;2020.06.18&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;SXXXX
-  </y></div>
-  
-  <div class="button5">
-  <x id="mydata3" style="font-family:Roboto; font-size:16px;         ">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- 張曉華&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- &emsp;&emsp;&emsp;&ensp;男  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;2020.06.18&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;SXXXX
-  </x></div>
-  
-  <div class="button6">
-  <w id="mydata4" style="font-family:Roboto; font-size:16px;         ">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- 張曉華&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- &emsp;&emsp;&emsp;&ensp;男  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;2020.06.18&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;SXXXX
-  </w></div>
-  
-  <div class="button7">
-  <v id="mydata5" style="font-family:Roboto; font-size:16px;         ">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- 張曉華&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- &emsp;&emsp;&emsp;&ensp;男  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;2020.06.18&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;SXXXX
-  </v></div>
-  
-  <div class="button8">
-  <l id="mydata6" style="font-family:Roboto; font-size:16px;         ">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- 張曉華&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- &emsp;&emsp;&emsp;&ensp;男  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;2020.06.18&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;SXXXX
-  </l></div>
-  
-  <div class="button9">
-  <t id="mydata7" style="font-family:Roboto; font-size:16px;         ">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- 張曉華&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- &emsp;&emsp;&emsp;&ensp;男  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;2020.06.18&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;SXXXX
-  </t></div>
-  
-  <div class="button10">
-  <m id="mydata8" style="font-family:Roboto; font-size:16px;         ">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- 張曉華&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
- &emsp;&emsp;&emsp;&ensp;男  &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;2020.06.18&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;SXXXX
-  </m></div>
-  
-  </div>  
-  <div id="myModal" class="modal">
+    row += "<div class='col-md-12' style='text-align: center; padding: 5px 0px; font-size:16px; display:flex;'>"
+    
+    row += "<p id='p1'>" + inputData[i].name + "</p>"
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <p style="position:relative; top:12px;left:24px; font-size:20px;     font-family:Roboto;">張曉華</p>
+    let gen = inputData[i].gender;
+
+    if( gen === male )
+      gen = "男";
+    else if( gen === female )
+      gen = "女";
+
+    row +=  "<p id='p2'>" + gen + "</p>"
+
+    let birth = inputData[i].birth.slice( 0 , 4 ) + "." inputData[i].birth.slice( 4 , 6 ) + "." inputData[i],birth.slice( 6 );
+
+    row += "<p id='p3'>" + birth + "</p>"
+    row += "<p id='p4'>" + inputData[i].id + "</p>"
+    row += "</div></d></d>"
+    console.log(row);
+
+    getElementById("stockAllData").innerHTML += row;
+    getElementById("Id").innerHTML = inputData[i].id;
+    getElementById("Name").innerHTML = inputData[i].name;
+    getElementById("Birth").innerHTML = inputData[i].birth.slice( 0 , 4 ) + "." + inputData[i].birth.slice( 4 , 6 ) + "." + inputData[i].birth.slice( 6 );
+    if( inputData[i].gender === "male" )
+      getElementById("Gender").innerHTML = "男"
+    else if( inputData[i].gender === "female" )
+      getElementById("Gender").innerHTML = "女"
+
+    getElementById("Title").innerHTML = inputData[i].title;
+    getElementById("phoneNumber").innerHTML = inputData[i].phoneNumber;
+    getElementById("Address").innerHTML = inputData[i].address;
+    getElementById("Share").innerHTML = inputData[i].share;
+    getElementById("Lot").innerHTML = inputData[i].lot;
+    getElementById("Amount").innerHTML = inputData[i].lot + inputData[i].share * 1000;
+    console.log("formed data");
+  }
+}
+
+function getCookie(cname) 
+{
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) 
+  {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') 
+    {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) 
+    {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+async function getData()
+{
+  document.getElementById("name2").innerHTML = getCookie("name");
+  let username = getCookie("user");
+  let password = getCookie("pwd");
+  try
+  {
+    response = await fetch("/api/getStockHolderInfo" , {
+      method : "POST", 
+      header : 
+      {
+        'Content-type' : 'application/json'
+      } , 
+      body : JSON.stringfy("userId" : username , "userPassword" : password )
+    });
+    data = await response.json();
+    for( let i = 0; i < data.length; i++ )
+    {
+      var row = "<d href='#detail'> + <d class='row' id="mydata+i" onclick='modaldetail(" + i + ")'> style='position:relative; top:23px; left:48px; width:995px;'>"
+      row += "<div class='col-md-12' style='text-align: center; padding: 5px 0px; font-size:16px; display:flex;'>"
+      row += "<p id='p1'>" + data[i].name + "</p>"      
+      let gen = data[i].gender;
+      if( gen === "male" )
+        gen = "男"
+      else if( gen === "female" )
+        gen = "女"
+      row +=  "<p id='p2'>" + gen + "</p>"
+
+      let birth = inputData[i].birth.slice( 0 , 4 ) + "." inputData[i].birth.slice( 4 , 6 ) + "." inputData[i],birth.slice( 6 );
+      row += "<p id='p3'>" + birth + "</p>"
+      row += "<p id='p4'>" + data[i].id + "</p>"
+      row += "</div></d></d>"
+      console.log(row);
+      document.getElementById("stockAllData").innerHTML += row;
+    }
+  }
+  catch(error)
+  {
+    console.log(error);
+  }
+}
+
+function modalDetail(i)
+{
+  document.getElementById("Name").innerHTML = data[i].name;
+  document.getElementById("Id").innerHTML = data[i].id;
+  document.getElementById("Birth").innerHTML = data[i].birth;
+  document.getElementById("phoneNumber").innerHTML = data[i].phoneNumber;
+  document.getElementById("Address").innerHTML = data[i].address;
+  document.getElementById("Share").innerHTML = data[i].share;
+  document.getElementById("lot").innerHTML = data[i].lot;
+  document.getElementById("Amount").innerHTML = data[i].lot + data[i].share * 1000;
+  console.log("modal_detail_get");
+}
+
+</script>
+
+<body onload="getdata()">
+<header>
+
+<p style="position:relative;top: 31px; left:54px;font-family: Roboto; font-style: normal; font-weight: normal; font-size: 30px; line-height: 35px; color: #FFFFFF;">
+股東資料管理系統</p>
+
+<div class="dropdown">
+    <button class="dropbtn">登入的人
+      <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-content">
+      <op href="#" style="cursor:pointer;">登出</op>
     </div>
-    <div class="modal-body">
-      <p style="font-family:Roboto; font-size:18px; color: 
-      rgba(0, 0, 0, 0.5); position:relative;            top:-15px;left:10px;">
-      ID</p>
-      <p style="font-family:Roboto; font-size:18px; color: 
-      #000000; position:relative;                   top:-30px;left:10px;">SXXXX</p>
-      <p style="font-family:Roboto; font-size:18px; color: 
-      rgba(0, 0, 0, 0.5); position:relative; left:10px; top:-25px;">性別</p>
-      <p style="font-family:Roboto; font-size:18px; color: 
-      #000000; position:relative; top:-40px;left:10px;">男</p>
-     <p style="font-family:Roboto; font-size:18px; color: 
-      rgba(0, 0, 0, 0.5); position:relative; left:10px; top:-45px;">聯絡地址</p> 
-      <p style="font-family:Roboto; font-size:18px; color: 
-      #000000; position:relative; top:-60px;left:12px;">No. 2, Sec. 2, Bade Rd. Da'an Dist., Taipei City, Taiwan</p>
-      
-       <p style="font-family:Roboto; font-size:18px; color: 
-      rgba(0, 0, 0, 0.5); position:relative; left:10px; top:-45px;">零股數量(股)</p> 
-      <p style="font-family:Roboto; font-size:18px; color: 
-      #000000; position:relative; top:-60px;left:12px;">XXXXXX</p>
-      
-       <p style="font-family:Roboto; font-size:18px; color: 
-      rgba(0, 0, 0, 0.5); position:relative; left:500px;              top:-338px;">生日</p> 
-      
-      <p style="font-family:Roboto; font-size:18px; color: 
-      #000000; position:relative; top:-352px;left:502px;">XXXX.XX.XX</p>
-      
-       <p style="font-family:Roboto; font-size:18px; color: 
-      rgba(0, 0, 0, 0.5); position:relative; left:500px;                top:-350px;">聯絡電話</p> 
-      
-      <p style="font-family:Roboto; font-size:18px; color: 
-      #000000; position:relative; top:-366px;left:502px;">0918-XXX-XXX</p>
-      
-       <p style="font-family:Roboto; font-size:18px; color: 
-      rgba(0, 0, 0, 0.5); position:relative; left:500px;                top:-368px;">股票張數(張)</p> 
-      
-      <p style="font-family:Roboto; font-size:18px; color: 
-      #000000; position:relative; top:-382px;left:502px;">2</p>
-      
-      <p style="font-family:Roboto; font-size:18px; color: 
-      rgba(0, 0, 0, 0.5); position:relative; left:500px;                top:-372px;">持股總數</p> 
-      
-      <p style="font-family:Roboto; font-size:18px; color: 
-      #000000; position:relative; top:-388px;left:502px;">2080</p> 
-      
-     </div>
-    <div class="modal-footer">
-    </div>
-</div></div>
+  </div> 
+
+</header>
+
+
+<div class="side">
+
+<div class="mydiv2" style="position:relative; left:68px; top:18px;">
 </div>
- 
+<div class="side_bar">
+<a href="./stock_ceo_data.html" style="position:relative; top:31px;">股東資料總覽</a>
+<a href="./stock_ceo_edit.html" style="position:relative; top:31px;">股東資料編輯</a>
+<a href="./stock_ceo_transaction_data.html" style="position:relative; top:31px;">交易紀錄總覽</a>
+<a href="./stock_ceo_person_data.html" style="position:relative; top:31px;">個人資料總覽</a>
+<a href="#" style="position:relative; top:31px;">個人股票總覽</a>
+<a href="./stock_ceo_person_transaction_data.html" style="position:relative; top:31px;">個人交易紀錄</a>
+<a href="./stock_ceo_transaction.html" style="position:relative; top:31px;">股票交易系統</a>
+<a href="#" style="position:relative; top:31px;">系統異常報修</a>
+</div>
+<div class="mydiv3">股東資料總覽</div>
+</div>
+<div class="mydiv4">
+<input class="searchbox" placeholder="關鍵字搜尋(姓名、生日、電話.........)"
+style="padding: 6px 17px 7px;">
+<button class="sbutton">搜尋</button>
+<div class="row" style="position:relative; top:23px; left:48px; width:995px;">
+<div class="col-md-3" style=
+"background-color: rgba(108, 159, 200, 0.77); text-align: center;
+ padding: 5px 0px; font-weight:600;">股東姓名
+</div>
+            <div
+              class="col-md-3" style="background-color: rgba(108, 159, 200, 0.77); 
+              text-align: center; padding: 5px 0px;font-weight:600;">
+              性別
+            </div>
+            <div
+              class="col-md-3" 
+              style="background-color: rgba(108, 159, 200, 0.77); 
+              text-align: center; padding: 5px 0px; font-weight:600;">
+              生日
+            </div>
+            <div
+              class="col-md-3" 
+              style="background-color: rgba(108, 159, 200, 0.77); 
+              text-align: center; padding: 5px 0px; font-weight:600;">
+              ID
+            </div>
+          </div>
 
+<div id = "stockAllData">
+</div>
+<div class="modal" id="myModal">
+  <div class="modal-body">
+      <div class="modal-header" style="position:relative; top:-16px; left:-16px;">
+        <h style="color:#ffffff; font-family:Roboto;
+            font-size:20px;">股東資料</h>
+      <button type="button" class="close" data-dismiss="modal"
+    aria-label="Close" style="color: white; font-size: 30px;      position:relative; top:-5px;">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <div class="row">
+      <div class="col-md-6" style="
+    font-size: 18px; line-height: 21px;
+        color: rgba(0, 0, 0, 0.5);">ID
+      </div>
+        <div class="col-md-6" style="font-family: Roboto;
+    font-size: 18px; line-height: 21px;
+        color: rgba(0, 0, 0, 0.5);">生日
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6" style="
+    font-size: 18px; line-height: 21px; padding-top:10px;
+        color:#000000;">S0003
+      </div>
+        <div class="col-md-6" style="
+    font-size: 18px; line-height: 21px; padding-top:10px;
+        color: #000000;">1998.02.14
+      </div>
+     </div>
+        
+     <div class="row">
+      <div class="col-md-6" style="font-family: Roboto;
+    font-size: 18px; line-height: 21px; padding-top:24px;
+        color: rgba(0, 0, 0, 0.5);">性別
+      </div>
+        <div class="col-md-6" style="font-family: Roboto;
+    font-size: 18px; line-height: 21px; padding-top:24px;
+        color: rgba(0, 0, 0, 0.5);">電話
+      </div>
+     </div>
+     
+     <div class="row">
+      <div class="col-md-6" style="font-family: Roboto;
+    font-size: 18px; line-height: 21px; padding-top:10px;
+        color: #000000">男
+      </div>
+        <div class="col-md-6" style="
+    font-size: 18px; line-height: 21px; padding-top:10px;
+        color: #000000;">0988-XXX-XXX
+      </div>
+     </div>
+     
+     <div class="row">
+      <div class="col-md-6" style="
+    font-size: 18px; line-height: 21px;padding-top:24px;
+        color: rgba(0, 0, 0, 0.5);">聯絡地址
+      </div>
+        <div class="col-md-6" style="font-family: Roboto;
+    font-size: 18px; line-height: 21px;padding-top:24px;
+        color: rgba(0, 0, 0, 0.5);">股票張數
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6" style="
+    font-size: 18px; line-height: 21px; padding-top:10px;
+        color:#000000;">XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      </div>
+        <div class="col-md-6" style="
+    font-size: 18px; line-height: 21px; padding-top:10px;
+        color: #000000;">2
+      </div>
+     </div>
+     
+     <div class="row">
+      <div class="col-md-6" style="
+    font-size: 18px; line-height: 21px;padding-top:24px;
+        color: rgba(0, 0, 0, 0.5);">零股數量
+      </div>
+        <div class="col-md-6" style="font-family: Roboto;
+    font-size: 18px; line-height: 21px;padding-top:24px;
+        color: rgba(0, 0, 0, 0.5);">持股總數(股)
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6" style="
+    font-size: 18px; line-height: 21px; padding-top:10px;
+        color:#000000;">80
+      </div>
+        <div class="col-md-6" style="
+    font-size: 18px; line-height: 21px; padding-top:10px;
+        color: #000000;">2080
+      </div>
+     </div>
+
+</div>
+</div>
 
 <script>
 var modal = document.getElementById("myModal");
@@ -720,84 +539,30 @@ var btn7 = document.getElementById("mydata7");
 var btn8 = document.getElementById("mydata8"); 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-var span2 = document.getElementsByClassName("close")[0];
-var span3 = document.getElementsByClassName("close")[0];
-var span4 = document.getElementsByClassName("close")[0];
-var span5 = document.getElementsByClassName("close")[0];
-var span6 = document.getElementsByClassName("close")[0];
-var span7 = document.getElementsByClassName("close")[0];
-var span8 = document.getElementsByClassName("close")[0];
+
 // When the user clicks the button, open the modal 
-btn.onclick = function() 
-{
-  modal.style.display = "block";
-}
-btn2.onclick = function() 
-{
-  modal.style.display = "block";
-}
-btn3.onclick = function() 
-{
-  modal.style.display = "block";
-}
-
-btn4.onclick = function() 
-{
-  modal.style.display = "block";
-}
-
-btn5.onclick = function() 
-{
-  modal.style.display = "block";
-}
-
-btn6.onclick = function() 
-{
-  modal.style.display = "block";
-}
-
-btn7.onclick = function() 
-{
-  modal.style.display = "block";
-}
-btn8.onclick = function() 
-{
-  modal.style.display = "block";
-}
-
+btn.onclick = function()
+{modal.style.display = "block";}
+btn2.onclick = function()
+{modal.style.display = "block";}
+btn3.onclick = function()
+{modal.style.display = "block";}
+btn4.onclick = function()
+{modal.style.display = "block";}
+btn5.onclick = function()
+{modal.style.display = "block";}
+btn6.onclick = function()
+{modal.style.display = "block";}
+btn7.onclick = function()
+{modal.style.display = "block";}
+btn8.onclick = function()
+{modal.style.display = "block";}
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() 
+span.onclick = function()
 {
   modal.style.display = "none";
 }
-span2.onclick = function() 
-{
-  modal.style.display = "none";
-}
-span3.onclick = function() 
-{
-  modal.style.display = "none";
-}
-span4.onclick = function() 
-{
-  modal.style.display = "none";
-}
-span5.onclick = function() 
-{
-  modal.style.display = "none";
-}
-span6.onclick = function() 
-{
-  modal.style.display = "none";
-}
-span7.onclick = function() 
-{
-  modal.style.display = "none";
-}
-span8.onclick = function() 
-{
-  modal.style.display = "none";
-}
+
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) 
 {
@@ -805,8 +570,8 @@ window.onclick = function(event)
     modal.style.display = "none";
   }
 }
+
 </script>
 
 </body>
-</html>
-
+</blade.php>
